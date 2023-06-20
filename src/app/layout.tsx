@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Roboto } from "next/font/google";
 
-import { Header } from "@/components/Layout";
+import { Header, Footer } from "@/components/Layout";
 
 import "./globals.css";
 
@@ -16,6 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={roboto.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
