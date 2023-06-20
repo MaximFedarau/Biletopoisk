@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @mixin layout-container {
     display: flex;
     justify-content: space-between;

@@ -4,7 +4,7 @@ const path = require("node:path");
 const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'src', 'styles')],
-        prependData: `@import "main";`
+        prependData: `@use "main" as *;`
     }
 }
 
