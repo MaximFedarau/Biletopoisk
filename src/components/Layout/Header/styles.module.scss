@@ -1,0 +1,29 @@
+.header {
+    @include layout-container;
+    position: sticky;
+    top: 0;
+}
+
+.header__title {
+    font-size: $text-4xl;
+    font-weight: $font-bold;
+    color: $white;
+}
+
+.header__basket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $size-4;
+}
+
+.header__basket-items-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    border-radius: $rounded-lg;
+    color: $white;
+    width: $size-14;
+    height: $size-14;
+}

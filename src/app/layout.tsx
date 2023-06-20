@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 
 import { Header, Footer } from "@/components/Layout";
 
-import "./globals.css";
+import "./globals.scss";
 
 const roboto = Roboto({
   subsets: ["cyrillic", "latin"],

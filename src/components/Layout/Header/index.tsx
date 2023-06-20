@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import classNames from "classnames";
 
 import basket from "public/icons/basket.svg";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export const Header: FC = () => {
   const [itemsQuantity] = useState(0);
