@@ -1,11 +1,52 @@
-import classNames from "classnames";
+import { NextPage } from "next";
 
-import { redfg, bluebg } from "./page.module.css";
-
-export default function Home() {
+const Home: NextPage = () => {
   return (
     <main>
-      <h1 className={classNames(redfg, bluebg)}>Hello!</h1>
+      <h1>First!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
+
+      <h1>Hello!</h1>
+      <h1>Hello!</h1>
     </main>
   );
-}
+};
+
+export default Home;

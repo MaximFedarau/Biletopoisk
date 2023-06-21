@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import { Roboto } from "next/font/google";
 
-import "./globals.css";
+import { Header, Footer } from "@/components/Layout";
+
+import "./globals.scss";
 
 const roboto = Roboto({
   subsets: ["cyrillic", "latin"],
@@ -11,7 +13,11 @@ const roboto = Roboto({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

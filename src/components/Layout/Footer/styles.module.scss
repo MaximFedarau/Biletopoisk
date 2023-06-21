@@ -1,0 +1,9 @@
+.footer {
+    @include layout-container;
+}
+
+.footer-text {
+    color: $white;
+    font-size: $text-xl;
+    font-weight: $font-normal;
+}

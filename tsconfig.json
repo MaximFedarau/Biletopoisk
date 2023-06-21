@@ -14,10 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      { "name": "typescript-plugin-css-modules" },
-      { "name": "next" }
-    ],
+    "plugins": [{ "name": "next" }],
     "paths": {
       "@/*": ["./src/*"]
     }
