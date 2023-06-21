@@ -1,5 +1,5 @@
 .container {
-    padding: $size-16;
+    @include page-container;
 }
 
 .container__card {

@@ -1,4 +1,5 @@
 "use client";
+
 import { FC, useState } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";

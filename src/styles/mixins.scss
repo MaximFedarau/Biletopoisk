@@ -8,3 +8,7 @@
     background-color: $gray-1;
     padding: 0 min($size-16, 4vw);
 }
+
+@mixin page-container {
+    padding: $size-16;
+}
