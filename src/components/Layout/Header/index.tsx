@@ -12,7 +12,7 @@ export const Header: FC = () => {
   return (
     <header className={classNames("layout-container", styles.header)}>
       <NextLink href="/">
-        <p className={styles.header__title}>Билетпоиск</p>
+        <p className={styles.header__title}>Билетопоиск</p>
       </NextLink>
       <section className={styles.header__basket}>
         {Boolean(itemsQuantity) && (

@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: $size-40;
     background-color: $gray-1;
-    padding: $size-12 min($size-16, 4vw);
+    padding: 0 min($size-16, 4vw);
 }

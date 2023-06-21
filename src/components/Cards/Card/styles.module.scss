@@ -1,0 +1,11 @@
+.container {
+    width: 100%;
+    background-color: $white;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+}
+
+.container__title {
+    font-size: $text-4xl;
+    font-weight: $font-semibold;
+}
