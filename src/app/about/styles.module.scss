@@ -1,4 +1,13 @@
 .container {
-    height: 100%;
     padding: $size-16;
+}
+
+.container__card {
+    gap: $size-8;
+}
+
+.container__description {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
 }
