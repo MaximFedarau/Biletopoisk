@@ -1,0 +1,13 @@
+.container {
+    @include page-container;
+}
+
+.container__card {
+    gap: $size-8;
+}
+
+.container__description {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}

@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: $white;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+}
+
+.container__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+$font-sizes: (big: $text-4xl, medium: $text-3xl, small: $text-2xl);
+
+.container__title {
+    font-weight: $font-semibold;
+
+    @each $name, $value in $font-sizes {
+        &.#{$name} {
+            font-size: $value;
+        }
+    }
+}

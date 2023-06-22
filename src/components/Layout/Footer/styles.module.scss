@@ -1,8 +1,9 @@
 .footer {
     @include layout-container;
+    margin-top: auto;
 }
 
-.footer-text {
+.footer__text {
     color: $white;
     font-size: $text-xl;
     font-weight: $font-normal;

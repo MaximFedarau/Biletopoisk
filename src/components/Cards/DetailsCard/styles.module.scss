@@ -1,0 +1,11 @@
+.card {
+    gap: $size-8;
+}
+
+.card__button {
+    cursor: pointer;
+}
+
+.card__button.pressed {
+    transform: rotate(180deg);
+}

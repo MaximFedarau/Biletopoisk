@@ -1,0 +1,18 @@
+.container {
+    @include page-container;
+    display: flex;
+    flex-direction: column;
+    gap: $size-12;
+}
+
+.container__cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}
+
+.container__answer {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}
