@@ -3,7 +3,6 @@
 import { FC, useState } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";
-import classNames from "classnames";
 
 import basket from "public/icons/basket.svg";
 import styles from "./styles.module.scss";
@@ -11,7 +10,7 @@ import styles from "./styles.module.scss";
 export const Header: FC = () => {
   const [itemsQuantity] = useState(0);
   return (
-    <header className={classNames("layout-container", styles.header)}>
+    <header className={styles.header}>
       <NextLink href="/">
         <p className={styles.header__title}>Билетопоиск</p>
       </NextLink>
