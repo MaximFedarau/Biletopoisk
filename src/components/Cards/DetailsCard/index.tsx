@@ -5,8 +5,9 @@ import NextImage from "next/image";
 import classNames from "classnames";
 
 import { Card } from "../Card";
-
+import { CARD_TITLE_SIZE } from "@/types/components";
 import chevronDown from "public/icons/chevronDown.svg";
+
 import styles from "./styles.module.scss";
 
 interface CardProps {
@@ -44,6 +45,7 @@ export const DetailsCard: FC<PropsWithChildren<CardProps>> = ({
   return (
     <Card
       title={title}
+      titleSize={CARD_TITLE_SIZE.SMALL}
       className={styles.card}
       rightSection={
         <ChevronButton isOpen={isOpen} changeIsOpen={changeIsOpen} />
