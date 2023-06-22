@@ -1,0 +1,12 @@
+.container {
+    background-color: $white;
+    border-radius: $rounded-lg;
+    padding: 0 $size-12;
+    flex: 2;
+}
+
+.container__content {
+    padding-top: $size-12;
+    position: sticky;
+    top: $size-40;
+}
