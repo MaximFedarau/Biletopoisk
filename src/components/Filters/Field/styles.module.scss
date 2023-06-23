@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: $size-2;
+    width: 100%;
+}
+
+.container__label {
+    width: fit-content;
+    font-size: $text-sm;
+}
+
+.container__input-container {
+    display: flex;
+    align-items: center;
+    border: $size-px solid $gray-3;
+    border-radius: $rounded-lg;
+    padding: 0 $size-8;
+    height: $size-20;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container__input-container_button {
+    * {
+        cursor: pointer;
+    }
+}
+
+.container__input-container_group {
+    gap: $size-2;
+}
+
+.container__input {
+    width: 100%;
+    height: 100%;
+    font-size: $text-sm;
+    border: none;
+    outline: none;
+    
+    &::placeholder {
+        color: $gray-2;
+    }
+}

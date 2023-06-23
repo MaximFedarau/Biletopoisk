@@ -2,6 +2,8 @@
 $white: #FFFFFF;
 $gray-0: #F2F2F2;
 $gray-1: #333333;
+$gray-2: #999FA6;
+$gray-3: #E1E3E6;
 $orange: #FF5500;
 
 /* Sizes */
@@ -59,3 +61,8 @@ $rounded-xl: 0.75rem; /* 12px */
 $rounded-2xl: 1rem; /* 16px */
 $rounded-3xl: 1.5rem; /* 24px */
 $rounded-full: 9999px;
+
+/* Z-index */
+$z-base: 0;
+$z-dropdown: 1000;
+$z-modal: 1400;

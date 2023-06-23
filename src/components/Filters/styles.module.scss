@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: $size-10;
-    padding-top: $size-12;
+    padding: $size-12 0;
     position: sticky;
     top: $size-40;
 }
