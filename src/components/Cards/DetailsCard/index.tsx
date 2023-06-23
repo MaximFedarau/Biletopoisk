@@ -5,7 +5,7 @@ import NextImage from "next/image";
 import classNames from "classnames";
 
 import { Card } from "../Card";
-import { CARD_TITLE_SIZE } from "@/types/components";
+import { CARD_TITLE_SIZE } from "@/types";
 import chevronDown from "public/icons/chevron_down.svg";
 
 import styles from "./styles.module.scss";

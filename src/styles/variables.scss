@@ -30,6 +30,7 @@ $size-24: 3rem; /* 48px */
 $size-28: 3.5rem; /* 56px */
 $size-32: 4rem; /* 64px */
 $size-40: 5rem; /* 80px */ 
+$size-120: 15rem; /* 240px */
 
 /* Font Sizes */
 $text-xs: 0.75rem; /* 12px */
@@ -64,5 +65,6 @@ $rounded-full: 9999px;
 
 /* Z-index */
 $z-base: 0;
+$z-layout: 3;
 $z-dropdown: 1000;
 $z-modal: 1400;

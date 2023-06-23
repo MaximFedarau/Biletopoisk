@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, ReactNode, useMemo } from "react";
 import classNames from "classnames";
 
-import { CARD_TITLE_SIZE } from "@/types/components";
+import { CARD_TITLE_SIZE } from "@/types";
 
 import styles from "./styles.module.scss";
 

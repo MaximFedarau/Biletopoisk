@@ -17,13 +17,13 @@ export const Filters: FC = () => {
           <Select
             labelText="Жанр"
             placeholder="Введите жанр"
-            data={["test"]}
+            data={["test1", "test2", "test3"]}
             onSearch={() => console.log("search")}
           />
           <Select
             labelText="Кинотеатр"
             placeholder="Введите кинотеатр"
-            data={["test"]}
+            data={["test1", "test2"]}
             onSearch={() => console.log("search")}
           />
         </div>

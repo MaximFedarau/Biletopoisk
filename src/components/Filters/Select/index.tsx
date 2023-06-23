@@ -1,4 +1,4 @@
-import { FC, useMemo, useEffect, useState, useRef } from "react";
+import { FC, useMemo, useEffect, useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import NextImage from "next/image";
 
@@ -25,30 +25,39 @@ export const Select: FC<Props> = ({
   const ref = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  const [dropdownOffset, setDropdownOffset] = useState<DOMRect>();
+  const [dropdownOffset, setDropdownOffset] = useState<DOMRect | undefined>(
+    ref.current?.getBoundingClientRect()
+  );
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const changeOffset = () =>
-    setDropdownOffset(ref.current?.getBoundingClientRect());
-  const handleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  const onDropdownClose = () => setIsDropdownOpen(false);
+  const changeOffset = useCallback(
+    () => setDropdownOffset(ref.current?.getBoundingClientRect()),
+    []
+  );
+  const handleDropdown = useCallback(() => {
+    if (!isDropdownOpen)
+      setDropdownOffset(ref.current?.getBoundingClientRect());
+    setIsDropdownOpen(!isDropdownOpen);
+  }, [isDropdownOpen]);
+  const onDropdownClose = useCallback(() => setIsDropdownOpen(false), []);
 
   useEffect(() => {
     setIsMounted(true);
-    changeOffset();
 
     return () => setIsMounted(false);
   }, []);
 
   const events = useMemo(() => ["scroll", "resize"], []);
   useEffect(() => {
-    events.forEach((event) => window.addEventListener(event, changeOffset));
+    if (isMounted && isDropdownOpen) {
+      events.forEach((event) => window.addEventListener(event, changeOffset));
 
-    return () =>
-      events.forEach((event) =>
-        window.removeEventListener(event, changeOffset)
-      );
-  }, [events]);
+      return () =>
+        events.forEach((event) =>
+          window.removeEventListener(event, changeOffset)
+        );
+    }
+  }, [isMounted, isDropdownOpen, events, changeOffset]);
 
   return (
     <div ref={ref} className={styles.container}>
@@ -72,6 +81,7 @@ export const Select: FC<Props> = ({
         createPortal(
           <Dropdown
             data={data}
+            parentRef={ref}
             offset={dropdownOffset || new DOMRect()}
             onClose={onDropdownClose}
             onSearch={onSearch}

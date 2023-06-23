@@ -1,7 +1,24 @@
 .container {
+    display: flex;
+    flex-direction: column;
     position: sticky;
-    background-color: red;
-    max-height: 50px;
+    background-color: $white;
+    border-radius: $rounded-lg;
+    padding: $size-2;
+    max-height: $size-120;
     overflow: scroll;
     overscroll-behavior: none;
+    box-shadow: 0 $size-5 $size-12 calc(-1 * $size-2) $gray-3;
+
+    * {
+        padding: $size-6;
+        border-radius: $rounded-lg;
+        font-size: $text-sm;
+        font-weight: $font-normal;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $gray-3;
+        }
+    }
 }
