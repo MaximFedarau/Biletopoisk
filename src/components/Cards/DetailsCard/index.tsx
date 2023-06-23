@@ -5,8 +5,8 @@ import NextImage from "next/image";
 import classNames from "classnames";
 
 import { Card } from "../Card";
-import { CARD_TITLE_SIZE } from "@/types/components";
-import chevronDown from "public/icons/chevronDown.svg";
+import { CARD_TITLE_SIZE } from "@/types";
+import chevronDown from "public/icons/chevron_down.svg";
 
 import styles from "./styles.module.scss";
 
@@ -26,7 +26,7 @@ const ChevronButton: FC<ChevronButtonProps> = ({ changeIsOpen, isOpen }) => {
       alt="chevron"
       onClick={changeIsOpen}
       className={classNames(styles.card__button, {
-        [styles.pressed]: isOpen,
+        [styles.card__button_pressed]: isOpen,
       })}
     />
   );

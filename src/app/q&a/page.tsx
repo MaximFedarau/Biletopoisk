@@ -3,7 +3,7 @@ import { NextPage, Metadata } from "next";
 
 import { Card, DetailsCard } from "@/components";
 
-import styles from "./styles.module.scss";
+import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "Вопросы-ответы",
@@ -73,7 +73,7 @@ const Page: NextPage = () => {
   return (
     <main className={styles.container}>
       <Card title="Вопросы-ответы" />
-      <section className={styles["container__cards-container"]}>
+      <section className={styles.container__cards}>
         {questions.map(({ question, answer }) => (
           <DetailsCard title={question} key={question}>
             <div className={styles.container__answer}>{answer}</div>

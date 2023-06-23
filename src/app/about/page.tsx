@@ -2,7 +2,7 @@ import { NextPage, Metadata } from "next";
 
 import { Card } from "@/components";
 
-import styles from "./styles.module.scss";
+import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
   title: "О нас",
