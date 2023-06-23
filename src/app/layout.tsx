@@ -14,6 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
       <body className={roboto.className}>
+        <div id="dropdown-root" className="dropdown-root" />
         <Header />
         {children}
         <Footer />

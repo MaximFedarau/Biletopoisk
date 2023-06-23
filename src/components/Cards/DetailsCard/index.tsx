@@ -26,7 +26,7 @@ const ChevronButton: FC<ChevronButtonProps> = ({ changeIsOpen, isOpen }) => {
       alt="chevron"
       onClick={changeIsOpen}
       className={classNames(styles.card__button, {
-        [styles.pressed]: isOpen,
+        [styles.card__button_pressed]: isOpen,
       })}
     />
   );

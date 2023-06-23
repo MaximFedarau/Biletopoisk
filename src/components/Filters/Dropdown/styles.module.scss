@@ -1,0 +1,7 @@
+.container {
+    position: sticky;
+    background-color: red;
+    max-height: 50px;
+    overflow: scroll;
+    overscroll-behavior: none;
+}

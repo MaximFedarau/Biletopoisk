@@ -5,6 +5,7 @@
 }
 
 body {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -14,4 +15,14 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.dropdown-root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  * {
+    z-index: 2;
+  }
 }

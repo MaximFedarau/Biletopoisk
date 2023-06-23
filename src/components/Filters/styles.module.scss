@@ -6,7 +6,29 @@
 }
 
 .container__content {
+    display: flex;
+    flex-direction: column;
+    gap: $size-10;
     padding-top: $size-12;
     position: sticky;
     top: $size-40;
+}
+
+.container__title {
+    font-size: $text-md;
+    font-weight: $font-semibold;
+}
+
+.container__filters {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}
+
+.dropdown {
+    position: sticky;
+    background-color: red;
+    max-height: 50px;
+    overflow: scroll;
+    overscroll-behavior: none;
 }
