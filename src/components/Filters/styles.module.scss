@@ -5,6 +5,17 @@
     flex: 2;
 }
 
+.container_center {
+    display: flex;
+    justify-content: center;
+    padding: $size-12;
+}
+
+.container__spinner {
+    width: $size-28;
+    height: $size-28;
+}
+
 .container__content {
     display: flex;
     flex-direction: column;

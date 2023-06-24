@@ -38,6 +38,7 @@
     font-size: $text-sm;
     border: none;
     outline: none;
+    background-color: inherit;
     
     &::placeholder {
         color: $gray-2;

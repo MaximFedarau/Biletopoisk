@@ -1,6 +1,6 @@
 import { NextPage, Metadata } from "next";
 
-import { Filters } from "@/components/Filters";
+import { Movies } from "@/components/Movies";
 
 import styles from "./page.module.scss";
 
@@ -11,51 +11,7 @@ export const metadata: Metadata = {
 const Page: NextPage = () => {
   return (
     <main className={styles.container}>
-      <Filters />
-      <section className={styles.container__cards}>
-        <h1>First!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-
-        <h1>Hello!</h1>
-        <h1>Hello!</h1>
-      </section>
+      <Movies />
     </main>
   );
 };
