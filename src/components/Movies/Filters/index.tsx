@@ -5,16 +5,9 @@ import { FC } from "react";
 import { Field } from "./Field";
 import { Select } from "./Select";
 import { Cinema } from "@/types";
+import { genres } from "@/constants";
 
 import styles from "./styles.module.scss";
-
-const genres = [
-  { id: "none", content: "Не выбран" },
-  { id: "action", content: "Боевик" },
-  { id: "comedy", content: "Комедия" },
-  { id: "fantasy", content: "Фэнтези" },
-  { id: "horror", content: "Ужасы" },
-];
 
 interface Props {
   cinemas: Cinema[];
