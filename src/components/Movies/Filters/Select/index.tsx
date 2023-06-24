@@ -1,16 +1,17 @@
 import { FC, useMemo, useEffect, useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import NextImage from "next/image";
+import classNames from "classnames";
 
 import { Dropdown } from "../Dropdown";
 import { Field } from "../Field";
+import { DropdownDataItem } from "@/types";
 import filtersChevronDown from "public/icons/filters_chevron_down.svg";
 
 import styles from "./styles.module.scss";
-import classNames from "classnames";
 
 interface Props {
-  data: string[];
+  data: DropdownDataItem[];
   onSearch: () => void;
   placeholder?: string;
   labelText?: string;
@@ -25,6 +26,7 @@ export const Select: FC<Props> = ({
   const ref = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
+  const [inputValue, setInputValue] = useState("");
   const [dropdownOffset, setDropdownOffset] = useState<DOMRect | undefined>(
     ref.current?.getBoundingClientRect()
   );
@@ -75,6 +77,7 @@ export const Select: FC<Props> = ({
             })}
           />
         }
+        value={inputValue}
       />
       {isMounted &&
         isDropdownOpen &&
@@ -82,6 +85,7 @@ export const Select: FC<Props> = ({
           <Dropdown
             data={data}
             parentRef={ref}
+            setParentValue={setInputValue}
             offset={dropdownOffset || new DOMRect()}
             onClose={onDropdownClose}
             onSearch={onSearch}

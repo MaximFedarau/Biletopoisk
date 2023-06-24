@@ -4,10 +4,23 @@ import { FC } from "react";
 
 import { Field } from "./Field";
 import { Select } from "./Select";
+import { Cinema } from "@/types";
 
 import styles from "./styles.module.scss";
 
-export const Filters: FC = () => {
+const genres = [
+  { id: "none", content: "Не выбран" },
+  { id: "action", content: "Боевик" },
+  { id: "comedy", content: "Комедия" },
+  { id: "fantasy", content: "Фэнтези" },
+  { id: "horror", content: "Ужасы" },
+];
+
+interface Props {
+  cinemas: Cinema[];
+}
+
+export const Filters: FC<Props> = ({ cinemas }) => {
   return (
     <aside className={styles.container}>
       <section className={styles.container__content}>
@@ -17,13 +30,13 @@ export const Filters: FC = () => {
           <Select
             labelText="Жанр"
             placeholder="Введите жанр"
-            data={["test1", "test2", "test3"]}
+            data={genres}
             onSearch={() => console.log("search")}
           />
           <Select
             labelText="Кинотеатр"
             placeholder="Введите кинотеатр"
-            data={["test1", "test2"]}
+            data={cinemas.map(({ id, name }) => ({ id, content: name }))}
             onSearch={() => console.log("search")}
           />
         </div>

@@ -1,5 +1,5 @@
 export * from "./Cards";
-export * from "./Filters";
+export * from "./Movies/Filters";
 export * from "./Layout";
 export * from "./Movies";
 export * from "./ReduxProvider";

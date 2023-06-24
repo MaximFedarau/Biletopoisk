@@ -1,11 +1,23 @@
-import { FC, RefObject, useEffect, useRef, useCallback } from "react";
+import {
+  FC,
+  RefObject,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from "react";
+
+import { DropdownDataItem } from "@/types";
 
 import styles from "./styles.module.scss";
 
 interface Props {
-  data: string[];
+  data: DropdownDataItem[];
   offset: DOMRect;
   parentRef: RefObject<HTMLElement>;
+  setParentValue: Dispatch<SetStateAction<string>>;
   onClose: () => void;
   onSearch: () => void;
 }
@@ -14,7 +26,13 @@ const checkIsNode = (event: EventTarget | null): event is Node => {
   return !!event && "nodeType" in event;
 };
 
-export const Dropdown: FC<Props> = ({ data, offset, parentRef, onClose }) => {
+export const Dropdown: FC<Props> = ({
+  data,
+  offset,
+  parentRef,
+  setParentValue,
+  onClose,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const outsideClickHandler = useCallback(
@@ -28,6 +46,8 @@ export const Dropdown: FC<Props> = ({ data, offset, parentRef, onClose }) => {
     },
     [onClose, parentRef]
   );
+
+  const onItemClick = useCallback(() => {}, []);
 
   useEffect(() => {
     window.addEventListener("mousedown", outsideClickHandler);
@@ -45,9 +65,15 @@ export const Dropdown: FC<Props> = ({ data, offset, parentRef, onClose }) => {
       }}
       ref={ref}
     >
-      {data.map((value) => (
-        <p key={value} onClick={onClose}>
-          {value}
+      {data.map(({ id, content }) => (
+        <p
+          key={id}
+          onClick={() => {
+            setParentValue(content);
+            onClose();
+          }}
+        >
+          {content}
         </p>
       ))}
     </div>
