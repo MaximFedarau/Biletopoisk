@@ -1,15 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Movie } from "@/types";
+import { Movie, GENRES, SearchFilters } from "@/types";
 
 interface InitialState {
   isMoviesLoading: boolean;
   movies: Movie[];
+  searchFilters: SearchFilters;
 }
 
 const initialState: InitialState = {
-  isMoviesLoading: true,
+  isMoviesLoading: false,
   movies: [],
+  searchFilters: {
+    title: undefined,
+    genre: undefined,
+  },
 };
 
 export const moviesSlice = createSlice({
@@ -22,7 +27,24 @@ export const moviesSlice = createSlice({
     setMovies: (state, { payload }: PayloadAction<Movie[]>) => {
       state.movies = payload;
     },
+    setSearchFiltersTitle: (
+      state,
+      { payload }: PayloadAction<string | undefined>
+    ) => {
+      state.searchFilters.title = payload;
+    },
+    setSearchFiltersGenre: (
+      state,
+      { payload }: PayloadAction<GENRES | undefined>
+    ) => {
+      state.searchFilters.genre = payload;
+    },
   },
 });
 
-export const { setIsMoviesLoading, setMovies } = moviesSlice.actions;
+export const {
+  setIsMoviesLoading,
+  setMovies,
+  setSearchFiltersGenre,
+  setSearchFiltersTitle,
+} = moviesSlice.actions;

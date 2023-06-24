@@ -22,3 +22,8 @@ export interface Movie {
   director: string;
   reviewIds: string[];
 }
+
+export interface SearchFilters {
+  title?: string;
+  genre?: GENRES;
+}

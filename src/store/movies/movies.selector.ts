@@ -13,3 +13,8 @@ export const moviesSelector = createSelector(
   [moviesReducerSelector],
   ({ movies }) => movies
 );
+
+export const searchFiltersSelector = createSelector(
+  [moviesReducerSelector],
+  ({ searchFilters }) => searchFilters
+);

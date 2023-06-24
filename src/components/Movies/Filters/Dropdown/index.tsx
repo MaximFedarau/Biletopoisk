@@ -19,7 +19,7 @@ interface Props {
   parentRef: RefObject<HTMLElement>;
   setParentValue: Dispatch<SetStateAction<string>>;
   onClose: () => void;
-  onSearch: () => void;
+  onSearch: (value: string) => void;
 }
 
 const checkIsNode = (event: EventTarget | null): event is Node => {
@@ -32,6 +32,7 @@ export const Dropdown: FC<Props> = ({
   parentRef,
   setParentValue,
   onClose,
+  onSearch,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -70,6 +71,7 @@ export const Dropdown: FC<Props> = ({
           key={id}
           onClick={() => {
             setParentValue(content);
+            onSearch(id);
             onClose();
           }}
         >

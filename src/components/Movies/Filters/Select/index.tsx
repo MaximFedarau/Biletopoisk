@@ -12,7 +12,7 @@ import styles from "./styles.module.scss";
 
 interface Props {
   data: DropdownDataItem[];
-  onSearch: () => void;
+  onSearch: (value: string) => void;
   placeholder?: string;
   labelText?: string;
 }
