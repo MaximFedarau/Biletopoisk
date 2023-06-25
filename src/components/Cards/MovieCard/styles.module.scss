@@ -8,17 +8,47 @@
 
 .container__poster {
     height: 100%;
-    flex: 1;
     border-radius: $rounded-lg;
 }
 
 .container__card {
     gap: $size-4;
-    flex: 10;
+    flex: 12;
     padding: 0;
 }
 
 .container__genre {
     font-size: $text-md;
     font-style: italic;
+}
+
+.ticket {
+    display: flex;
+    align-items: center;
+    gap: $size-12;
+}
+
+.ticket__controller {
+    display: flex;
+    align-items: center;
+    gap: $size-4;
+}
+
+.ticket__close {
+    cursor: pointer;
+}
+
+.ticket__remove-button {
+    @include ticket-button;
+    background-color: $tangerine;
+}
+
+.ticket__add-button {
+    @include ticket-button;
+    background-color: $orange;
+}
+
+.ticket__text {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
 }

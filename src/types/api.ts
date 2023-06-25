@@ -26,4 +26,11 @@ export interface Movie {
 export interface SearchFilters {
   title?: string;
   genre?: GENRES;
+  cinemaId?: string;
+}
+
+export interface Ticket {
+  id: string;
+  quantity: number;
+  movie: Movie;
 }

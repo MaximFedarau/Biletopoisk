@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import { Dropdown } from "../Dropdown";
 import { Field } from "../Field";
-import { DropdownDataItem } from "@/types";
+import { DropdownDataItem, GENRES } from "@/types";
 import filtersChevronDown from "public/icons/filters_chevron_down.svg";
 
 import styles from "./styles.module.scss";
@@ -16,6 +16,7 @@ interface Props {
   placeholder?: string;
   labelText?: string;
   disabled?: boolean;
+  defaultId?: string | GENRES;
 }
 
 export const Select: FC<Props> = ({
@@ -24,12 +25,12 @@ export const Select: FC<Props> = ({
   placeholder,
   labelText,
   disabled,
+  defaultId,
 }) => {
   const ref = useRef<HTMLInputElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   const [inputValue, setInputValue] = useState(
-    data.find(({ id }) => id === "")?.content || ""
+    data.find(({ id }) => id === (defaultId || ""))?.content || ""
   );
   const [dropdownOffset, setDropdownOffset] = useState<DOMRect | undefined>(
     ref.current?.getBoundingClientRect()
@@ -47,15 +48,9 @@ export const Select: FC<Props> = ({
   }, [isDropdownOpen]);
   const onDropdownClose = useCallback(() => setIsDropdownOpen(false), []);
 
-  useEffect(() => {
-    setIsMounted(true);
-
-    return () => setIsMounted(false);
-  }, []);
-
   const events = useMemo(() => ["scroll", "resize"], []);
   useEffect(() => {
-    if (isMounted && isDropdownOpen) {
+    if (isDropdownOpen) {
       events.forEach((event) => window.addEventListener(event, changeOffset));
 
       return () =>
@@ -63,7 +58,7 @@ export const Select: FC<Props> = ({
           window.removeEventListener(event, changeOffset)
         );
     }
-  }, [isMounted, isDropdownOpen, events, changeOffset]);
+  }, [isDropdownOpen, events, changeOffset]);
 
   return (
     <div ref={ref} className={styles.container}>
@@ -84,8 +79,7 @@ export const Select: FC<Props> = ({
         value={inputValue}
         disabled={disabled}
       />
-      {isMounted &&
-        isDropdownOpen &&
+      {isDropdownOpen &&
         createPortal(
           <Dropdown
             data={data}
