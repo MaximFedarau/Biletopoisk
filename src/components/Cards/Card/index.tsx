@@ -6,7 +6,7 @@ import { CARD_TITLE_SIZE } from "@/types";
 import styles from "./styles.module.scss";
 
 interface Props {
-  title: string;
+  title: ReactNode;
   className?: string;
   rightSection?: ReactNode;
   titleSize?: CARD_TITLE_SIZE;
@@ -31,9 +31,15 @@ export const Card: FC<PropsWithChildren<Props>> = ({
   return (
     <div className={classNames(styles.container, className)}>
       <header className={styles.container__header}>
-        <p className={classNames(styles.container__title, titleSizeClassName)}>
-          {title}
-        </p>
+        {typeof title === "string" ? (
+          <p
+            className={classNames(styles.container__title, titleSizeClassName)}
+          >
+            {title}
+          </p>
+        ) : (
+          title
+        )}
         {rightSection}
       </header>
       {children}

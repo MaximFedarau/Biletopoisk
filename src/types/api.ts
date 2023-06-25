@@ -34,3 +34,10 @@ export interface Ticket {
   quantity: number;
   movie: Movie;
 }
+
+export interface Review {
+  id: string;
+  name: string;
+  text: string;
+  rating: number;
+}
