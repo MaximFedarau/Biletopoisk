@@ -28,7 +28,6 @@ export const Select: FC<Props> = ({
   defaultId,
 }) => {
   const ref = useRef<HTMLInputElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
 
   const [inputValue, setInputValue] = useState(
     data.find(({ id }) => id === (defaultId || ""))?.content || ""
@@ -49,15 +48,9 @@ export const Select: FC<Props> = ({
   }, [isDropdownOpen]);
   const onDropdownClose = useCallback(() => setIsDropdownOpen(false), []);
 
-  useEffect(() => {
-    setIsMounted(true);
-
-    return () => setIsMounted(false);
-  }, []);
-
   const events = useMemo(() => ["scroll", "resize"], []);
   useEffect(() => {
-    if (isMounted && isDropdownOpen) {
+    if (isDropdownOpen) {
       events.forEach((event) => window.addEventListener(event, changeOffset));
 
       return () =>
@@ -65,7 +58,7 @@ export const Select: FC<Props> = ({
           window.removeEventListener(event, changeOffset)
         );
     }
-  }, [isMounted, isDropdownOpen, events, changeOffset]);
+  }, [isDropdownOpen, events, changeOffset]);
 
   return (
     <div ref={ref} className={styles.container}>
@@ -86,8 +79,7 @@ export const Select: FC<Props> = ({
         value={inputValue}
         disabled={disabled}
       />
-      {isMounted &&
-        isDropdownOpen &&
+      {isDropdownOpen &&
         createPortal(
           <Dropdown
             data={data}

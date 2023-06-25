@@ -16,6 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ru">
       <body className={roboto.className}>
         <ReduxProvider>
+          <div id="modal-root" className="modal-root" />
           <div id="dropdown-root" className="dropdown-root" />
           <Header />
           {children}

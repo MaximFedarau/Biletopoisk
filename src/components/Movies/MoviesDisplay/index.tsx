@@ -39,8 +39,8 @@ export const MoviesDisplay: FC = () => {
         <Spinner width={64} height={64} />
       ) : (
         <>
-          {filterMovies(movies, searchFilters).map((props) => (
-            <MovieCard key={props.id} {...props} />
+          {filterMovies(movies, searchFilters).map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
           ))}
         </>
       )}

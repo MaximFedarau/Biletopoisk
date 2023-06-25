@@ -12,55 +12,66 @@ import { ticketSelector, addTicket, removeTicket } from "@/store/tickets";
 import styles from "./styles.module.scss";
 
 interface TicketControlsProps {
-  id: string;
+  movie: Movie;
+  lastTicketHandler?: (movie: Movie) => void;
 }
 
-const TicketContorls: FC<TicketControlsProps> = ({ id }) => {
-  const { quantity } = useSelector((state) => ticketSelector(state, id));
+const TicketContorls: FC<TicketControlsProps> = ({
+  movie,
+  lastTicketHandler,
+}) => {
+  const { quantity } = useSelector((state) => ticketSelector(state, movie.id));
   const dispatch = useDispatch();
 
-  const handleTickets = (add: boolean) => {
-    dispatch(add ? addTicket(id) : removeTicket(id));
+  const increaseTickets = () => dispatch(addTicket(movie));
+
+  const decreaseTickets = () => {
+    if (quantity === 1 && lastTicketHandler) lastTicketHandler(movie);
+    else dispatch(removeTicket(movie));
   };
 
   return (
     <div className={styles.ticket}>
       <div
         className={styles["ticket__remove-button"]}
-        onClick={() => handleTickets(false)}
+        onClick={decreaseTickets}
       >
         -
       </div>
       <p className={styles.ticket__text}>{quantity}</p>
-      <div
-        className={styles["ticket__add-button"]}
-        onClick={() => handleTickets(true)}
-      >
+      <div className={styles["ticket__add-button"]} onClick={increaseTickets}>
         +
       </div>
     </div>
   );
 };
 
-export const MovieCard: FC<Movie> = ({ id, title, genre, posterUrl }) => {
+interface Props {
+  movie: Movie;
+  lastTicketHandler?: (movie: Movie) => void;
+}
+
+export const MovieCard: FC<Props> = ({ movie, lastTicketHandler }) => {
   return (
     <div className={styles.container}>
       <NextImage
-        src={posterUrl}
-        alt={`${title} poster`}
+        src={movie.posterUrl}
+        alt={`${movie.title} poster`}
         width={100}
         height={120}
         className={styles.container__poster}
         priority
       />
       <Card
-        title={title}
+        title={movie.title}
         titleSize={CARD_TITLE_SIZE.SMALL}
         className={styles.container__card}
-        rightSection={<TicketContorls id={id} />}
+        rightSection={
+          <TicketContorls movie={movie} lastTicketHandler={lastTicketHandler} />
+        }
       >
         <p className={styles.container__genre}>
-          {genres.find(({ id }) => id === genre)?.content}
+          {genres.find(({ id }) => id === movie.genre)?.content}
         </p>
       </Card>
     </div>
