@@ -1,0 +1,12 @@
+.total {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    background-color: $white;
+    bottom: $size-12;
+    margin-top: auto;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+}

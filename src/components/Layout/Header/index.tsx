@@ -23,7 +23,9 @@ export const Header: FC = () => {
             {ticketsQuantity}
           </div>
         )}
-        <NextImage src={basket} alt="basket" />
+        <NextLink href="/cart">
+          <NextImage src={basket} alt="basket" />
+        </NextLink>
       </section>
     </header>
   );
