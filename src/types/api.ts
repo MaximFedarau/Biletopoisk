@@ -27,3 +27,8 @@ export interface SearchFilters {
   title?: string;
   genre?: GENRES;
 }
+
+export interface Ticket {
+  id: string;
+  quantity: number;
+}

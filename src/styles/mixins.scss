@@ -12,3 +12,13 @@
 @mixin page-container {
     padding: $size-16;
 }
+
+@mixin ticket-button {
+    width: $size-10;
+    height: $size-10;
+    border-radius: $rounded;
+    color: white;
+    text-align: center;
+    font-weight: $font-light;
+    cursor: pointer;
+}
