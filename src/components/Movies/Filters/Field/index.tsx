@@ -32,6 +32,7 @@ export const Field: FC<Props> = ({
         className={classNames(styles["container__input-container"], {
           [styles["container__input-container_group"]]: Boolean(rightSection),
           [styles["container__input-container_button"]]: isButton,
+          [styles["container__input-container_disabled"]]: props.disabled,
         })}
         onClick={isButton ? onClick : undefined}
       >

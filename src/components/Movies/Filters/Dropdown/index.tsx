@@ -16,10 +16,11 @@ import styles from "./styles.module.scss";
 interface Props {
   data: DropdownDataItem[];
   offset: DOMRect;
-  parentRef: RefObject<HTMLElement>;
+  containerRef: RefObject<HTMLElement>;
+  parentValue: string;
   setParentValue: Dispatch<SetStateAction<string>>;
   onClose: () => void;
-  onSearch: (value: string) => void;
+  onSearch: (value: string) => void | Promise<void>;
 }
 
 const checkIsNode = (event: EventTarget | null): event is Node => {
@@ -29,7 +30,8 @@ const checkIsNode = (event: EventTarget | null): event is Node => {
 export const Dropdown: FC<Props> = ({
   data,
   offset,
-  parentRef,
+  containerRef,
+  parentValue,
   setParentValue,
   onClose,
   onSearch,
@@ -41,14 +43,20 @@ export const Dropdown: FC<Props> = ({
       if (
         checkIsNode(event.target) &&
         !ref.current?.contains(event.target) &&
-        !parentRef.current?.contains(event.target as Node)
+        !containerRef.current?.contains(event.target as Node)
       )
         onClose();
     },
-    [onClose, parentRef]
+    [onClose, containerRef]
   );
 
-  const onItemClick = useCallback(() => {}, []);
+  const onDropdownItemClick = async (id: string, content: string) => {
+    onClose();
+    if (parentValue === content) return;
+
+    setParentValue(content);
+    await onSearch(id);
+  };
 
   useEffect(() => {
     window.addEventListener("mousedown", outsideClickHandler);
@@ -67,14 +75,7 @@ export const Dropdown: FC<Props> = ({
       ref={ref}
     >
       {data.map(({ id, content }) => (
-        <p
-          key={id}
-          onClick={() => {
-            setParentValue(content);
-            onSearch(id);
-            onClose();
-          }}
-        >
+        <p key={id} onClick={() => onDropdownItemClick(id, content)}>
           {content}
         </p>
       ))}

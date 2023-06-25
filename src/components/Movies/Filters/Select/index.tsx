@@ -12,9 +12,10 @@ import styles from "./styles.module.scss";
 
 interface Props {
   data: DropdownDataItem[];
-  onSearch: (value: string) => void;
+  onSearch: (value: string) => void | Promise<void>;
   placeholder?: string;
   labelText?: string;
+  disabled?: boolean;
 }
 
 export const Select: FC<Props> = ({
@@ -22,11 +23,14 @@ export const Select: FC<Props> = ({
   onSearch,
   placeholder,
   labelText,
+  disabled,
 }) => {
   const ref = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    data.find(({ id }) => id === "")?.content || ""
+  );
   const [dropdownOffset, setDropdownOffset] = useState<DOMRect | undefined>(
     ref.current?.getBoundingClientRect()
   );
@@ -67,7 +71,7 @@ export const Select: FC<Props> = ({
         placeholder={placeholder}
         labelText={labelText}
         isButton
-        onClick={handleDropdown}
+        onClick={disabled ? undefined : handleDropdown}
         rightSection={
           <NextImage
             src={filtersChevronDown}
@@ -78,13 +82,15 @@ export const Select: FC<Props> = ({
           />
         }
         value={inputValue}
+        disabled={disabled}
       />
       {isMounted &&
         isDropdownOpen &&
         createPortal(
           <Dropdown
             data={data}
-            parentRef={ref}
+            containerRef={ref}
+            parentValue={inputValue}
             setParentValue={setInputValue}
             offset={dropdownOffset || new DOMRect()}
             onClose={onDropdownClose}
