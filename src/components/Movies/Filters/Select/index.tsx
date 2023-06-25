@@ -1,19 +1,21 @@
 import { FC, useMemo, useEffect, useState, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import NextImage from "next/image";
+import classNames from "classnames";
 
 import { Dropdown } from "../Dropdown";
 import { Field } from "../Field";
+import { DropdownDataItem } from "@/types";
 import filtersChevronDown from "public/icons/filters_chevron_down.svg";
 
 import styles from "./styles.module.scss";
-import classNames from "classnames";
 
 interface Props {
-  data: string[];
-  onSearch: () => void;
+  data: DropdownDataItem[];
+  onSearch: (value: string) => void | Promise<void>;
   placeholder?: string;
   labelText?: string;
+  disabled?: boolean;
 }
 
 export const Select: FC<Props> = ({
@@ -21,10 +23,14 @@ export const Select: FC<Props> = ({
   onSearch,
   placeholder,
   labelText,
+  disabled,
 }) => {
   const ref = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
+  const [inputValue, setInputValue] = useState(
+    data.find(({ id }) => id === "")?.content || ""
+  );
   const [dropdownOffset, setDropdownOffset] = useState<DOMRect | undefined>(
     ref.current?.getBoundingClientRect()
   );
@@ -65,7 +71,7 @@ export const Select: FC<Props> = ({
         placeholder={placeholder}
         labelText={labelText}
         isButton
-        onClick={handleDropdown}
+        onClick={disabled ? undefined : handleDropdown}
         rightSection={
           <NextImage
             src={filtersChevronDown}
@@ -75,13 +81,17 @@ export const Select: FC<Props> = ({
             })}
           />
         }
+        value={inputValue}
+        disabled={disabled}
       />
       {isMounted &&
         isDropdownOpen &&
         createPortal(
           <Dropdown
             data={data}
-            parentRef={ref}
+            containerRef={ref}
+            parentValue={inputValue}
+            setParentValue={setInputValue}
             offset={dropdownOffset || new DOMRect()}
             onClose={onDropdownClose}
             onSearch={onSearch}

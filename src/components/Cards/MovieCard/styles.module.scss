@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    background-color: $white;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+    gap: $size-12;
+}
+
+.container__poster {
+    height: 100%;
+    flex: 1;
+    border-radius: $rounded-lg;
+}
+
+.container__card {
+    gap: $size-4;
+    flex: 10;
+    padding: 0;
+}
+
+.container__genre {
+    font-size: $text-md;
+    font-style: italic;
+}

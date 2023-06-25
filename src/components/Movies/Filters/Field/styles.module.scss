@@ -32,12 +32,21 @@
     gap: $size-2;
 }
 
+.container__input-container_disabled {
+    background-color: $gray-3;
+
+    &, * {
+        cursor: not-allowed
+    }
+}
+
 .container__input {
     width: 100%;
     height: 100%;
     font-size: $text-sm;
     border: none;
     outline: none;
+    background-color: inherit;
     
     &::placeholder {
         color: $gray-2;

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Roboto } from "next/font/google";
 
 import { Header, Footer } from "@/components/Layout";
+import { ReduxProvider } from "@/components/ReduxProvider";
 
 import "./globals.scss";
 
@@ -14,10 +15,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru">
       <body className={roboto.className}>
-        <div id="dropdown-root" className="dropdown-root" />
-        <Header />
-        {children}
-        <Footer />
+        <ReduxProvider>
+          <div id="dropdown-root" className="dropdown-root" />
+          <Header />
+          {children}
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );
