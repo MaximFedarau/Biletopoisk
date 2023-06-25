@@ -10,8 +10,10 @@ import { Cinema, GENRES, Movie } from "@/types";
 import { genres } from "@/constants";
 import {
   isMoviesLoadingSelector,
+  searchFiltersSelector,
   setIsMoviesLoading,
   setMovies,
+  setSearchFiltersCinemaId,
   setSearchFiltersGenre,
   setSearchFiltersTitle,
 } from "@/store/movies";
@@ -30,6 +32,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
   const dispatch = useDispatch();
 
   const isMoviesLoading = useSelector(isMoviesLoadingSelector);
+  const searchFilters = useSelector(searchFiltersSelector);
 
   const updateFilterTitle = debounce((value: string) => {
     dispatch(setSearchFiltersTitle(value));
@@ -45,6 +48,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
         `http://localhost:3001/api/movies${!!value ? `?cinemaId=${value}` : ""}`
       );
       const movies = (await res.json()) as Movie[];
+      dispatch(setSearchFiltersCinemaId(value));
       dispatch(setMovies(movies));
     } finally {
       dispatch(setIsMoviesLoading(false));
@@ -65,6 +69,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
             labelText="Название"
             onChange={handleTitleChange}
             disabled={isMoviesLoading}
+            defaultValue={searchFilters.title}
           />
           <Select
             labelText="Жанр"
@@ -72,6 +77,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
             data={genres}
             onSearch={updateFilterGenre}
             disabled={isMoviesLoading}
+            defaultId={searchFilters.genre}
           />
           <Select
             labelText="Кинотеатр"
@@ -82,6 +88,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
             ]}
             onSearch={getMoviesByCinemaId}
             disabled={isMoviesLoading}
+            defaultId={searchFilters.cinemaId}
           />
         </div>
       </section>

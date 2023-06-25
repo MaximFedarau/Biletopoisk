@@ -14,6 +14,7 @@ const initialState: InitialState = {
   searchFilters: {
     title: undefined,
     genre: undefined,
+    cinemaId: undefined,
   },
 };
 
@@ -39,6 +40,12 @@ export const moviesSlice = createSlice({
     ) => {
       state.searchFilters.genre = payload;
     },
+    setSearchFiltersCinemaId: (
+      state,
+      { payload }: PayloadAction<string | undefined>
+    ) => {
+      state.searchFilters.cinemaId = payload;
+    },
   },
 });
 
@@ -47,4 +54,5 @@ export const {
   setMovies,
   setSearchFiltersGenre,
   setSearchFiltersTitle,
+  setSearchFiltersCinemaId,
 } = moviesSlice.actions;
