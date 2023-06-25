@@ -1,8 +1,12 @@
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 
 import { Cart } from "@/components";
 
 import styles from "./page.module.scss";
+
+export const metadata: Metadata = {
+  title: "Корзина билетов",
+};
 
 const Page: NextPage = () => {
   return (

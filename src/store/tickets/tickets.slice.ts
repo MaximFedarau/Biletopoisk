@@ -39,7 +39,14 @@ export const ticketsSlice = createSlice({
         }
       }
     },
+    deleteTicket: (state, { payload: movie }: PayloadAction<Movie>) => {
+      const index = state.tickets.findIndex((ticket) => ticket.id === movie.id);
+      if (index !== -1) {
+        state.ticketsQuantity -= state.tickets[index].quantity;
+        state.tickets.splice(index, 1);
+      }
+    },
   },
 });
 
-export const { addTicket, removeTicket } = ticketsSlice.actions;
+export const { addTicket, removeTicket, deleteTicket } = ticketsSlice.actions;

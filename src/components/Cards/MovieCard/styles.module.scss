@@ -25,7 +25,17 @@
 .ticket {
     display: flex;
     align-items: center;
+    gap: $size-12;
+}
+
+.ticket__controller {
+    display: flex;
+    align-items: center;
     gap: $size-4;
+}
+
+.ticket__close {
+    cursor: pointer;
 }
 
 .ticket__remove-button {

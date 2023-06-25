@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 import { MovieCard } from "../Cards";
 import { Modal } from "../Modal";
 import {
-  removeTicket,
+  deleteTicket,
   ticketsQuantitySelector,
   ticketsSelector,
 } from "@/store/tickets";
@@ -19,7 +19,7 @@ export const Cart: FC = () => {
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [removedMovie, setRemovedMovie] = useState<Movie>();
+  const [deletedMovie, setDeletedMovie] = useState<Movie>();
 
   const ticketsQuantity = useSelector(ticketsQuantitySelector);
   const tickets = useSelector(ticketsSelector);
@@ -43,12 +43,12 @@ export const Cart: FC = () => {
 
   const lastTicketHandler = (movie: Movie) => {
     onModalOpen();
-    setRemovedMovie(movie);
+    setDeletedMovie(movie);
   };
 
   const onModalAgree = () => {
     onModalClose();
-    if (removedMovie) dispatch(removeTicket(removedMovie));
+    if (deletedMovie) dispatch(deleteTicket(deletedMovie));
   };
 
   return (
@@ -59,6 +59,7 @@ export const Cart: FC = () => {
             key={id}
             movie={movie}
             lastTicketHandler={lastTicketHandler}
+            isTicketCard
           />
         ))}
       </div>
