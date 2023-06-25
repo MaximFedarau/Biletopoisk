@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useMemo, memo } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -74,7 +74,7 @@ interface CardProps extends Props {
   isPoster?: boolean;
 }
 
-export const MovieCard: FC<CardProps> = ({
+const _MovieCard: FC<CardProps> = ({
   movie,
   lastTicketHandler,
   isTicketCard,
@@ -143,3 +143,5 @@ export const MovieCard: FC<CardProps> = ({
     </Wrapper>
   );
 };
+
+export const MovieCard = memo(_MovieCard);

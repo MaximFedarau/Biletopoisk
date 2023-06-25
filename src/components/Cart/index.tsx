@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 
@@ -24,32 +24,35 @@ export const Cart: FC = () => {
   const ticketsQuantity = useSelector(ticketsQuantitySelector);
   const tickets = useSelector(ticketsSelector);
 
-  const onModalClose = () => {
+  const onModalClose = useCallback(() => {
     const body = document.body;
     const scrollY = body.style.top;
     body.style.position = "";
     body.style.top = "";
     window.scrollTo(0, parseInt(scrollY || "0") * -1);
     setIsModalOpen(false);
-  };
+  }, []);
 
-  const onModalOpen = () => {
+  const onModalOpen = useCallback(() => {
     const scrollY = window.scrollY;
     const body = document.body;
     body.style.position = "fixed";
     body.style.top = `-${scrollY}px`;
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const lastTicketHandler = (movie: Movie) => {
-    onModalOpen();
-    setDeletedMovie(movie);
-  };
+  const lastTicketHandler = useCallback(
+    (movie: Movie) => {
+      onModalOpen();
+      setDeletedMovie(movie);
+    },
+    [onModalOpen]
+  );
 
-  const onModalAgree = () => {
+  const onModalAgree = useCallback(() => {
     onModalClose();
     if (deletedMovie) dispatch(deleteTicket(deletedMovie));
-  };
+  }, [onModalClose, dispatch, deletedMovie]);
 
   return (
     <>
