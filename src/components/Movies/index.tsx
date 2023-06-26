@@ -3,24 +3,26 @@
 import { FC } from "react";
 
 import { Filters } from "./Filters";
-import { Spinner } from "../Spinner";
 import { MoviesDisplay } from "./MoviesDisplay";
+import { Spinner } from "@/components/Reusables";
 import { useGetInitialDataQuery } from "@/store/api";
 
 import styles from "./styles.module.scss";
 
 export const Movies: FC = () => {
-  // returns cinemas and sets movies global state
   const { data: cinemas, isLoading, isError } = useGetInitialDataQuery();
 
   if (isLoading)
     return (
-      <div className={styles["spinner-container"]}>
-        <Spinner width={64} height={64} />
+      <div className={styles.spinner}>
+        <Spinner />
       </div>
     );
 
-  if (!cinemas || isError) return <div>Error</div>;
+  if (!cinemas || isError)
+    throw new Error(
+      "Возникла ошибка при получении доступа к фильмам и фильтрам"
+    );
 
   return (
     <>

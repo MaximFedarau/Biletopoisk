@@ -1,0 +1,46 @@
+.ticket {
+    display: flex;
+    align-items: center;
+    gap: $size-12;
+}
+
+.ticket__controller {
+    display: flex;
+    align-items: center;
+    gap: $size-4;
+}
+
+.ticket__close {
+    cursor: pointer;
+}
+
+.ticket__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-10;
+    height: $size-10;
+    border-radius: $rounded;
+    cursor: pointer;
+    background-color: $orange;
+    border: none;
+
+    &:hover {
+        background-color: $orange-hover;
+    }
+
+    &:disabled {
+        background-color: $tangerine;
+        cursor: not-allowed;
+    }
+}
+
+.ticket__button-image {
+    width: 50%;
+    height: 50%;
+}
+
+.ticket__text {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+}

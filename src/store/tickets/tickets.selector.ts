@@ -10,17 +10,22 @@ export const ticketsSelector = createSelector(
   ({ tickets }) => tickets
 );
 
-export const ticketSelector = createSelector(
-  [ticketsSelector, (_, id) => id],
-  (tickets, id) => {
+export const ticketsQuantitiesSelector = createSelector(
+  [ticketsReducerSelector],
+  ({ ticketsQuantities }) => ticketsQuantities
+);
+
+export const ticketQuantitySelector = createSelector(
+  [ticketsQuantitiesSelector, (_, id) => id],
+  (ticketsQuantities, id) => {
     return (
-      tickets.find((ticket) => id === ticket.id) ||
+      ticketsQuantities.find((ticket) => id === ticket.id) ||
       ({ id, quantity: 0 } as Ticket)
     );
   }
 );
 
-export const ticketsQuantitySelector = createSelector(
+export const totalQuantitySelector = createSelector(
   [ticketsReducerSelector],
-  ({ ticketsQuantity }) => ticketsQuantity
+  ({ totalQuantity }) => totalQuantity
 );

@@ -1,7 +1,6 @@
 import {
   FC,
   RefObject,
-  useState,
   useEffect,
   useRef,
   useCallback,
@@ -66,7 +65,7 @@ export const Dropdown: FC<Props> = ({
 
   return (
     <div
-      className={styles.container}
+      className={styles.dropdown}
       style={{
         top: offset.height + offset.top + 4,
         left: offset.left,

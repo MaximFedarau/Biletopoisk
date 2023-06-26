@@ -1,28 +1,20 @@
 "use client";
 
 import { FC, useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 
-import { MovieCard } from "../Cards";
-import { Modal } from "../Modal";
-import {
-  deleteTicket,
-  ticketsQuantitySelector,
-  ticketsSelector,
-} from "@/store/tickets";
+import { TotalTickets } from "./TotalTickets";
+import { TicketsList } from "./TicketsList";
+import { Modal } from "@/components/Reusables";
+import { deleteTicket } from "@/store/tickets";
 import { Movie } from "@/types";
-
-import styles from "./styles.module.scss";
 
 export const Cart: FC = () => {
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deletedMovie, setDeletedMovie] = useState<Movie>();
-
-  const ticketsQuantity = useSelector(ticketsQuantitySelector);
-  const tickets = useSelector(ticketsSelector);
 
   const onModalClose = useCallback(() => {
     const body = document.body;
@@ -56,20 +48,8 @@ export const Cart: FC = () => {
 
   return (
     <>
-      <div className={styles.cards}>
-        {tickets.map(({ id, movie }) => (
-          <MovieCard
-            key={id}
-            movie={movie}
-            lastTicketHandler={lastTicketHandler}
-            isTicketCard
-          />
-        ))}
-      </div>
-      <div className={styles.total}>
-        <p>Итого билетов:</p>
-        <p>{ticketsQuantity}</p>
-      </div>
+      <TicketsList lastTicketHandler={lastTicketHandler} />
+      <TotalTickets />
       {isModalOpen &&
         createPortal(
           <Modal

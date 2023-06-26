@@ -41,11 +41,13 @@ export const Select: FC<Props> = ({
     () => setDropdownOffset(ref.current?.getBoundingClientRect()),
     []
   );
+
   const handleDropdown = useCallback(() => {
     if (!isDropdownOpen)
       setDropdownOffset(ref.current?.getBoundingClientRect());
     setIsDropdownOpen(!isDropdownOpen);
   }, [isDropdownOpen]);
+
   const onDropdownClose = useCallback(() => setIsDropdownOpen(false), []);
 
   const events = useMemo(() => ["scroll", "resize"], []);
@@ -61,7 +63,7 @@ export const Select: FC<Props> = ({
   }, [isDropdownOpen, events, changeOffset]);
 
   return (
-    <div ref={ref} className={styles.container}>
+    <div ref={ref} className={styles.select}>
       <Field
         placeholder={placeholder}
         labelText={labelText}
@@ -72,7 +74,7 @@ export const Select: FC<Props> = ({
             src={filtersChevronDown}
             alt="chevron"
             className={classNames({
-              [styles.container__button_pressed]: isDropdownOpen,
+              [styles.select_active]: isDropdownOpen,
             })}
           />
         }

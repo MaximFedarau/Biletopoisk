@@ -1,4 +1,4 @@
-import { Metadata, NextPage } from "next";
+import { Metadata } from "next";
 
 import { Cart } from "@/components";
 
@@ -8,9 +8,9 @@ export const metadata: Metadata = {
   title: "Корзина билетов",
 };
 
-const Page: NextPage = () => {
+const Page = () => {
   return (
-    <main className={styles.container}>
+    <main className={styles.page}>
       <Cart />
     </main>
   );

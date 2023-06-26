@@ -1,0 +1,12 @@
+.review {
+    display: flex;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+    gap: $size-16;
+    background-color: $white;
+}
+
+.review__card {
+    padding: 0;
+    gap: $size-8;
+}

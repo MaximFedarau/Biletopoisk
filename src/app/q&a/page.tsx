@@ -71,12 +71,12 @@ const questions: Question[] = [
 
 const Page: NextPage = () => {
   return (
-    <main className={styles.container}>
+    <main className={styles.page}>
       <Card title="Вопросы-ответы" />
-      <section className={styles.container__cards}>
+      <section className={styles.page__cards}>
         {questions.map(({ question, answer }) => (
           <DetailsCard title={question} key={question}>
-            <div className={styles.container__answer}>{answer}</div>
+            <div className={styles.page__answer}>{answer}</div>
           </DetailsCard>
         ))}
       </section>

@@ -1,12 +1,12 @@
-.container {
+.page {
     @include page-container;
 }
 
-.container__card {
+.page__card {
     gap: $size-8;
 }
 
-.container__description {
+.page__description {
     display: flex;
     flex-direction: column;
     gap: $size-8;

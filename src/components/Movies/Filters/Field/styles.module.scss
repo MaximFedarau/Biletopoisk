@@ -1,16 +1,16 @@
-.container {
+.field {
     display: flex;
     flex-direction: column;
     gap: $size-2;
     width: 100%;
 }
 
-.container__label {
+.field__label {
     width: fit-content;
     font-size: $text-sm;
 }
 
-.container__input-container {
+.field__content {
     display: flex;
     align-items: center;
     border: $size-px solid $gray-3;
@@ -19,20 +19,24 @@
     height: $size-20;
     width: 100%;
     overflow: hidden;
+
+    &:focus-within {
+        border-color: $orange;
+    }
 }
 
-.container__input-container_button {
+.field__content_button {
     cursor: pointer;
     * {
         cursor: pointer;
     }
 }
 
-.container__input-container_group {
+.field__content_group {
     gap: $size-2;
 }
 
-.container__input-container_disabled {
+.field__content_disabled {
     background-color: $gray-3;
 
     &, * {
@@ -40,7 +44,7 @@
     }
 }
 
-.container__input {
+.field__input {
     width: 100%;
     height: 100%;
     font-size: $text-sm;

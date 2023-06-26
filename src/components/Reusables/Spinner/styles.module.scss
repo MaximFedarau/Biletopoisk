@@ -1,0 +1,17 @@
+.spinner {
+    width: $size-32;
+    height: $size-32;
+    border: $size-3 solid $gray-3;
+    border-top: $size-3 solid $orange;
+    border-radius: $rounded-full;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

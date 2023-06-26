@@ -1,4 +1,4 @@
-import { NextPage, Metadata } from "next";
+import { Metadata } from "next";
 
 import { Card } from "@/components";
 
@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: "О нас",
 };
 
-const Page: NextPage = () => {
+const Page = () => {
   return (
-    <main className={styles.container}>
-      <Card title="О нас" className={styles.container__card}>
-        <div className={styles.container__description}>
+    <main className={styles.page}>
+      <Card title="О нас" className={styles.page__card}>
+        <article className={styles.page__description}>
           <p>
             Мы — крупнейший сервис о кино в рунете. На нем вы сможете посмотреть
             фильмы и сериалы, купить билеты в кино, узнать рейтинги популярных
@@ -33,7 +33,7 @@ const Page: NextPage = () => {
             октября 2013 года сервис купила компания «Яндекс» (размер сделки —
             $80 млн, около 2,6 млрд рублей на то время).
           </p>
-        </div>
+        </article>
       </Card>
     </main>
   );

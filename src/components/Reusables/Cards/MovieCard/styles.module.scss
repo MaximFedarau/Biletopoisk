@@ -1,0 +1,53 @@
+@mixin card {
+    display: flex;
+    background-color: $white;
+    padding: $size-12;
+    border-radius: $rounded-lg;
+    gap: $size-12;
+}
+
+.card_link {
+    @include card;
+    &:hover {
+        background-color: $gray-4;
+        .card__content {
+            background-color: $gray-4;
+        }
+    }
+}
+
+.card_poster {
+    @include card;
+    .card__image-container {
+        width: $size-200;
+        height: $size-250;
+    }
+
+    .card__content {
+        gap: $size-12;
+    }
+}
+
+.card__image-container {
+    position: relative;
+    height: $size-60;
+    width: $size-50;
+    border-radius: $rounded-lg;
+    overflow: hidden;
+    
+}
+
+.card__image {
+    object-fit: cover;
+}
+
+.card__content {
+    gap: $size-4;
+    flex: 12;
+    padding: 0;
+}
+
+.card__genre {
+    font-size: $text-md;
+    font-style: italic;
+}
