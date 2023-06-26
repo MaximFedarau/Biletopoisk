@@ -3,8 +3,8 @@
 import { FC } from "react";
 
 import { Filters } from "./Filters";
-import { Spinner } from "../Spinner";
 import { MoviesDisplay } from "./MoviesDisplay";
+import { Spinner } from "@/components/Reusables";
 import { useGetInitialDataQuery } from "@/store/api";
 
 import styles from "./styles.module.scss";

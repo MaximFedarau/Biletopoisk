@@ -4,9 +4,7 @@ import { FC, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 
-import { MovieCard } from "../Cards";
-import { Modal } from "../Modal";
-import { EmptyState } from "../EmptyState";
+import { Modal, EmptyState, MovieCard } from "@/components/Reusables";
 import {
   deleteTicket,
   totalQuantitySelector,

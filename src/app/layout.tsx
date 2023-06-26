@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Roboto } from "next/font/google";
 
 import { Header, Footer } from "@/components/Layout";
-import { ReduxProvider } from "@/components/ReduxProvider";
+import { ReduxProvider } from "@/components";
 
 import "./globals.scss";
 

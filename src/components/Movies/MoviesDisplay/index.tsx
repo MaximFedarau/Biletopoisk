@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 
-import { EmptyState } from "@/components/EmptyState";
-import { MovieCard } from "@/components/Cards";
-import { Spinner } from "@/components/Spinner";
+import { Spinner, EmptyState, MovieCard } from "@/components/Reusables";
 import {
   isMoviesLoadingSelector,
   moviesSelector,
