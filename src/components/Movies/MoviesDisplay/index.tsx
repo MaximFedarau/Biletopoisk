@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 
+import { EmptyState } from "@/components/EmptyState";
 import { MovieCard } from "@/components/Cards";
 import { Spinner } from "@/components/Spinner";
 import {
@@ -39,9 +40,13 @@ export const MoviesDisplay: FC = () => {
         <Spinner />
       ) : (
         <>
-          {filterMovies(movies, searchFilters).map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+          {filterMovies(movies, searchFilters).length > 0 ? (
+            filterMovies(movies, searchFilters).map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))
+          ) : (
+            <EmptyState />
+          )}
         </>
       )}
     </section>

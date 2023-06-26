@@ -1,5 +1,6 @@
 export * from "./Cards";
 export * from "./Cart";
+export * from "./EmptyState";
 export * from "./Movies/Filters";
 export * from "./Layout";
 export * from "./Modal";

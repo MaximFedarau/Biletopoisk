@@ -125,7 +125,7 @@ const _MovieCard: FC<CardProps> = ({
           [styles.container_poster]: isPoster,
         })}
       >
-        <div className={styles.container__image}>
+        <div className={styles["container__image-container"]}>
           <NextImage
             src={movie.posterUrl}
             alt={`${movie.title} poster`}
@@ -134,6 +134,7 @@ const _MovieCard: FC<CardProps> = ({
             sizes="100%"
             placeholder="blur"
             blurDataURL={movie.posterUrl}
+            className={styles.container__image}
           />
         </div>
         <Card

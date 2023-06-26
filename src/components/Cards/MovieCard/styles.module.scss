@@ -16,7 +16,7 @@
 }
 
 .container_poster {
-    .container__image {
+    .container__image-container {
         width: $size-200;
         height: $size-250;
     }
@@ -26,12 +26,17 @@
     }
 }
 
-.container__image {
+.container__image-container {
     position: relative;
     height: $size-60;
     width: $size-50;
     border-radius: $rounded-lg;
     overflow: hidden;
+    
+}
+
+.container__image {
+    object-fit: cover;
 }
 
 .container__card {

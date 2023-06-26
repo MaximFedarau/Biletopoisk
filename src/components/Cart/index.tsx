@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 
 import { MovieCard } from "../Cards";
 import { Modal } from "../Modal";
+import { EmptyState } from "../EmptyState";
 import {
   deleteTicket,
   totalQuantitySelector,
@@ -33,14 +34,20 @@ const TicketsList: FC<TicketsListProps> = ({ lastTicketHandler }) => {
   const tickets = useSelector(ticketsSelector);
   return (
     <div className={styles.cards}>
-      {tickets.map((movie) => (
-        <MovieCard
-          key={movie.id}
-          movie={movie}
-          lastTicketHandler={lastTicketHandler}
-          isTicketCard
-        />
-      ))}
+      {tickets.length > 0 ? (
+        <>
+          {tickets.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              lastTicketHandler={lastTicketHandler}
+              isTicketCard
+            />
+          ))}
+        </>
+      ) : (
+        <EmptyState />
+      )}
     </div>
   );
 };
