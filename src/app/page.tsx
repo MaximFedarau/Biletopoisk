@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const Page: NextPage = () => {
   return (
-    <main className={styles.container}>
+    <main className={styles.page}>
       <Movies />
     </main>
   );

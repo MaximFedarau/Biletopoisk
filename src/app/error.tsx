@@ -11,9 +11,9 @@ export default function Error({ error }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <main className={styles.container}>
-      <p className={styles.container__title}>{error.message}</p>
-      <p className={styles.container__text}>Попробуйте еще раз позже</p>
+    <main className={styles.page}>
+      <p className={styles.page__title}>{error.message}</p>
+      <p className={styles.page__text}>Попробуйте еще раз позже</p>
     </main>
   );
 }

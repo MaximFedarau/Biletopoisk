@@ -1,17 +1,17 @@
-.container {
+.page {
     @include page-container;
     display: flex;
     flex-direction: column;
     gap: $size-12;
 }
 
-.container__cards {
+.page__cards {
     display: flex;
     flex-direction: column;
     gap: $size-8;
 }
 
-.container__answer {
+.page__answer {
     display: flex;
     flex-direction: column;
     gap: $size-8;
