@@ -16,11 +16,14 @@ export const Movies: FC = () => {
   if (isLoading)
     return (
       <div className={styles["spinner-container"]}>
-        <Spinner width={64} height={64} />
+        <Spinner />
       </div>
     );
 
-  if (!cinemas || isError) return <div>Error</div>;
+  if (!cinemas || isError)
+    throw new Error(
+      "Возникла ошибка при получении доступа к фильмам и фильтрам"
+    );
 
   return (
     <>

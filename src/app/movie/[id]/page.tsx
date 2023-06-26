@@ -9,7 +9,7 @@ const getMovie = async (id: string) => {
     const res = await fetch(`http://localhost:3001/api/movie?movieId=${id}`);
     return (await res.json()) as Movie;
   } catch (error) {
-    throw new Error("Failed to fetch movie");
+    throw new Error("Возникла ошибка при получении данных фильма");
   }
 };
 
@@ -18,7 +18,7 @@ const getReviews = async (id: string) => {
     const res = await fetch(`http://localhost:3001/api/reviews?movieId=${id}`);
     return (await res.json()) as Review[];
   } catch (error) {
-    throw new Error("Failed to fetch reviews");
+    throw new Error("Возникла ошибка при получении рецензий");
   }
 };
 

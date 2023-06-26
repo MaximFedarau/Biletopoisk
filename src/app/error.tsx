@@ -2,21 +2,18 @@
 
 import { useEffect } from "react";
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
+import styles from "./error.module.scss";
+
+export default function Error({ error }: { error: Error; reset: () => void }) {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
-    </div>
+    <main className={styles.container}>
+      <p className={styles.container__title}>{error.message}</p>
+      <p className={styles.container__text}>Попробуйте еще раз позже</p>
+    </main>
   );
 }

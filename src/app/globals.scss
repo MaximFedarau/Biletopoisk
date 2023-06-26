@@ -34,3 +34,10 @@ a {
   position: absolute;
   z-index: $z-dropdown;
 }
+
+.loader {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

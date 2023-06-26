@@ -36,7 +36,7 @@ export const MoviesDisplay: FC = () => {
       })}
     >
       {isMoviesLoading ? (
-        <Spinner width={64} height={64} />
+        <Spinner />
       ) : (
         <>
           {filterMovies(movies, searchFilters).map((movie) => (
