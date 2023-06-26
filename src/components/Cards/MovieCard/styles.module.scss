@@ -6,8 +6,28 @@
     gap: $size-12;
 }
 
-.container__poster {
+.container_link {
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 $size-5 $size-12 calc(-1 * $size-2) $gray-3;
+    }
+}
+
+.container_poster {
+    min-height: 44vh;
+
+    .container__image {
+        flex: 3,
+    }
+
+    .container__card {
+        gap: $size-12;
+    }
+}
+
+.container__image {
     height: 100%;
+    width: auto;
     border-radius: $rounded-lg;
 }
 
@@ -15,6 +35,32 @@
     gap: $size-4;
     flex: 12;
     padding: 0;
+}
+
+.container__info {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}
+
+.container__info-row {
+    display: flex;
+    gap: $size-4;
+}
+
+.container__label {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+}
+
+.container__text {
+    font-size: $text-xl;
+}
+
+.container__description {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
 }
 
 .container__genre {

@@ -18,7 +18,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: $gray-3;
+            background-color: transparentize($gray-3, 0.4);
         }
     }
 }
