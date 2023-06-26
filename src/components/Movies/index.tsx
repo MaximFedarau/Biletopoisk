@@ -14,7 +14,7 @@ export const Movies: FC = () => {
 
   if (isLoading)
     return (
-      <div className={styles["spinner-container"]}>
+      <div className={styles.spinner}>
         <Spinner />
       </div>
     );

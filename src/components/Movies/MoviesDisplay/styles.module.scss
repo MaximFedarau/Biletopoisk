@@ -1,11 +1,11 @@
-.container {
+.display {
     display: flex;
     flex-direction: column;
     flex: 8;
     gap: $size-8;
 }
 
-.container_loading {
+.display_loading {
     justify-content: center;
     align-items: center;
 }

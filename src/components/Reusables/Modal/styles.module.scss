@@ -1,4 +1,4 @@
-.container {
+.modal {
     position: fixed;
     display: flex;
     align-items: center;
@@ -9,7 +9,7 @@
     top: 0;
 }
 
-.container__content {
+.modal__content {
     display: flex;
     flex-direction: column;
     width: 24vw;
@@ -19,23 +19,23 @@
     gap: $size-12;
 }
 
-.container__text-content {
+.modal__header {
     display: flex;
     flex-direction: column;
     gap: $size-8;
 }
 
-.container__title {
+.modal__title {
     font-size: $text-xl;
     font-weight: $font-semibold;
 }
 
-.container__buttons {
+.modal__buttons {
     display: flex;
     gap: $size-4;
 }
 
-@mixin modal-button {
+@mixin modal__button {
     height: $size-20;
     width: $size-28;
     border-radius: $rounded-lg;
@@ -47,8 +47,8 @@
     cursor: pointer;
 }
 
-.container__button_filled {
-    @include modal-button;
+.modal__button_filled {
+    @include modal__button;
     background-color: $orange;
     color: $white;
 
@@ -57,8 +57,8 @@
     }
 }
 
-.container__button_outlined {
-    @include modal-button;
+.modal__button_outlined {
+    @include modal__button;
     background-color: $white;
     color: $orange;
     border: $size-px solid $orange;

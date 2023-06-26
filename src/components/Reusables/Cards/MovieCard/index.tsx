@@ -43,11 +43,11 @@ const _MovieCard: FC<Props> = ({
     >
       <div
         className={classNames({
-          [styles.container_link]: !isPoster,
-          [styles.container_poster]: isPoster,
+          [styles.card_link]: !isPoster,
+          [styles.card_poster]: isPoster,
         })}
       >
-        <div className={styles["container__image-container"]}>
+        <div className={styles["card__image-container"]}>
           <NextImage
             src={movie.posterUrl}
             alt={`${movie.title} poster`}
@@ -56,13 +56,13 @@ const _MovieCard: FC<Props> = ({
             sizes="100%"
             placeholder="blur"
             blurDataURL={movie.posterUrl}
-            className={styles.container__image}
+            className={styles.card__image}
           />
         </div>
         <Card
           title={movie.title}
           titleSize={CARD_TITLE_SIZE.SMALL}
-          className={styles.container__card}
+          className={styles.card__content}
           rightSection={
             <TicketContorls
               movie={movie}
@@ -74,7 +74,7 @@ const _MovieCard: FC<Props> = ({
           {isPoster ? (
             <Poster posterContent={posterContent} movie={movie} />
           ) : (
-            <p className={styles.container__genre}>{genre}</p>
+            <p className={styles.card__genre}>{genre}</p>
           )}
         </Card>
       </div>

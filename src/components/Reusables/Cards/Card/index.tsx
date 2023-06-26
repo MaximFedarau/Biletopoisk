@@ -29,12 +29,10 @@ export const Card: FC<PropsWithChildren<Props>> = ({
   );
 
   return (
-    <div className={classNames(styles.container, className)}>
-      <header className={styles.container__header}>
+    <div className={classNames(styles.card, className)}>
+      <header className={styles.card__header}>
         {typeof title === "string" ? (
-          <p
-            className={classNames(styles.container__title, titleSizeClassName)}
-          >
+          <p className={classNames(styles.card__title, titleSizeClassName)}>
             {title}
           </p>
         ) : (

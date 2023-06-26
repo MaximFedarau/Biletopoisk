@@ -18,21 +18,21 @@ export const Modal: FC<Props> = ({
   onDisagree,
 }) => {
   return (
-    <aside className={styles.container} onClick={onClose}>
+    <aside className={styles.modal} onClick={onClose}>
       <div
-        className={styles.container__content}
+        className={styles.modal__content}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className={styles["container__text-content"]}>
-          <p className={styles.container__title}>{title}</p>
+        <header className={styles.modal__header}>
+          <p className={styles.modal__title}>{title}</p>
           {Boolean(children) && children}
-        </div>
-        <div className={styles.container__buttons}>
-          <button className={styles.container__button_filled} onClick={onAgree}>
+        </header>
+        <div className={styles.modal__buttons}>
+          <button className={styles.modal__button_filled} onClick={onAgree}>
             Да
           </button>
           <button
-            className={styles.container__button_outlined}
+            className={styles.modal__button_outlined}
             onClick={onDisagree}
           >
             Нет

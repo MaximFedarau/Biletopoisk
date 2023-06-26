@@ -16,7 +16,7 @@ interface Props {
 export const TicketsList: FC<Props> = ({ lastTicketHandler }) => {
   const tickets = useSelector(ticketsSelector);
   return (
-    <div className={styles.cards}>
+    <article className={styles.cards}>
       {tickets.length > 0 ? (
         <>
           {tickets.map((movie) => (
@@ -31,6 +31,6 @@ export const TicketsList: FC<Props> = ({ lastTicketHandler }) => {
       ) : (
         <EmptyState />
       )}
-    </div>
+    </article>
   );
 };

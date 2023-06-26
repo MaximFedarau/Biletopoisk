@@ -1,22 +1,17 @@
-.container {
+.filters {
     background-color: $white;
     border-radius: $rounded-lg;
     padding: 0 $size-12;
     flex: 2;
 }
 
-.container_center {
+.filters_center {
     display: flex;
     justify-content: center;
     padding: $size-12;
 }
 
-.container__spinner {
-    width: $size-28;
-    height: $size-28;
-}
-
-.container__content {
+.filters__content {
     display: flex;
     flex-direction: column;
     gap: $size-10;
@@ -25,12 +20,12 @@
     top: $size-40;
 }
 
-.container__title {
+.filters__title {
     font-size: $text-md;
     font-weight: $font-semibold;
 }
 
-.container__filters {
+.filters__column {
     display: flex;
     flex-direction: column;
     gap: $size-8;

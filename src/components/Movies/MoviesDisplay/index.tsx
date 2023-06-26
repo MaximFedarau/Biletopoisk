@@ -19,8 +19,8 @@ export const MoviesDisplay: FC = () => {
 
   return (
     <section
-      className={classNames(styles.container, {
-        [styles.container_loading]: isMoviesLoading,
+      className={classNames(styles.display, {
+        [styles.display_loading]: isMoviesLoading,
       })}
     >
       {isMoviesLoading ? (

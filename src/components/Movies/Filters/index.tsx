@@ -60,10 +60,10 @@ export const Filters: FC<Props> = ({ cinemas }) => {
   };
 
   return (
-    <aside className={styles.container}>
-      <section className={styles.container__content}>
-        <p className={styles.container__title}>Фильтр поиска</p>
-        <div className={styles.container__filters}>
+    <aside className={styles.filters}>
+      <div className={styles.filters__content}>
+        <p className={styles.filters__title}>Фильтр поиска</p>
+        <div className={styles.filters__column}>
           <Field
             placeholder="Введите название"
             labelText="Название"
@@ -91,7 +91,7 @@ export const Filters: FC<Props> = ({ cinemas }) => {
             defaultId={searchFilters.cinemaId}
           />
         </div>
-      </section>
+      </div>
     </aside>
   );
 };

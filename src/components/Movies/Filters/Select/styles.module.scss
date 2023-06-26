@@ -1,7 +1,7 @@
-.container {
+.select {
     display: flex;
     width: 100%;
 }
-.container__button_pressed {
+.select_active {
     transform: rotate(180deg);
 }

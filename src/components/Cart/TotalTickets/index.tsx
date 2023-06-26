@@ -10,9 +10,9 @@ import styles from "./styles.module.scss";
 export const TotalTickets: FC = () => {
   const totalQuantity = useSelector(totalQuantitySelector);
   return (
-    <div className={styles.total}>
+    <aside className={styles.total}>
       <p>Итого билетов:</p>
       <p>{totalQuantity}</p>
-    </div>
+    </aside>
   );
 };

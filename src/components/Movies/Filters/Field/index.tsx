@@ -22,23 +22,23 @@ export const Field: FC<Props> = ({
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.field}>
       {Boolean(labelText) && (
-        <label htmlFor={props.id || id} className={styles.container__label}>
+        <label htmlFor={props.id || id} className={styles.field__label}>
           {labelText}
         </label>
       )}
       <div
-        className={classNames(styles["container__input-container"], {
-          [styles["container__input-container_group"]]: Boolean(rightSection),
-          [styles["container__input-container_button"]]: isButton,
-          [styles["container__input-container_disabled"]]: props.disabled,
+        className={classNames(styles.field__content, {
+          [styles.field__content_group]: Boolean(rightSection),
+          [styles.field__content_button]: isButton,
+          [styles.field__content_disabled]: props.disabled,
         })}
         onClick={isButton ? onClick : undefined}
       >
         <input
           {...props}
-          className={classNames(styles.container__input, props.className)}
+          className={classNames(styles.field__input, props.className)}
           id={props.id || id}
           onClick={isButton ? undefined : onClick}
           readOnly={isButton || props.readOnly}
