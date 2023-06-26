@@ -1,54 +1,14 @@
 "use client";
 
 import { FC, useState, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 
-import { Modal, EmptyState, MovieCard } from "@/components/Reusables";
-import {
-  deleteTicket,
-  totalQuantitySelector,
-  ticketsSelector,
-} from "@/store/tickets";
+import { TotalTickets } from "./TotalTickets";
+import { TicketsList } from "./TicketsList";
+import { Modal } from "@/components/Reusables";
+import { deleteTicket } from "@/store/tickets";
 import { Movie } from "@/types";
-
-import styles from "./styles.module.scss";
-
-const TotalTickets: FC = () => {
-  const totalQuantity = useSelector(totalQuantitySelector);
-  return (
-    <div className={styles.total}>
-      <p>Итого билетов:</p>
-      <p>{totalQuantity}</p>
-    </div>
-  );
-};
-
-interface TicketsListProps {
-  lastTicketHandler?: (movie: Movie) => void;
-}
-
-const TicketsList: FC<TicketsListProps> = ({ lastTicketHandler }) => {
-  const tickets = useSelector(ticketsSelector);
-  return (
-    <div className={styles.cards}>
-      {tickets.length > 0 ? (
-        <>
-          {tickets.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              lastTicketHandler={lastTicketHandler}
-              isTicketCard
-            />
-          ))}
-        </>
-      ) : (
-        <EmptyState />
-      )}
-    </div>
-  );
-};
 
 export const Cart: FC = () => {
   const dispatch = useDispatch();

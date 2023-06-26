@@ -2,6 +2,7 @@ import { FC } from "react";
 import NextImage from "next/image";
 
 import { Card } from "../Card";
+import { ReviewHeader } from "./ReviewHeader";
 import { Review } from "@/types";
 import emptyAvatar from "public/images/empty_avatar.svg";
 
@@ -17,14 +18,7 @@ export const ReviewCard: FC<Review> = ({ name, text, rating }) => {
         blurDataURL="public/images/empty_avatar.svg"
       />
       <Card
-        title={
-          <div className={styles.review__title}>
-            <p className={styles.review__highlights}>{name}</p>
-            <div className={styles.review__rating}>
-              Оценка: <p className={styles.review__highlights}>{rating}</p>
-            </div>
-          </div>
-        }
+        title={<ReviewHeader name={name} rating={rating} />}
         className={styles.review__card}
       >
         <p>{text}</p>

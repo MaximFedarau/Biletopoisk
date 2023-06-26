@@ -1,24 +1,11 @@
-"use client";
-
 import { FC } from "react";
 import NextImage from "next/image";
 import NextLink from "next/link";
-import { useSelector } from "react-redux";
 
-import { totalQuantitySelector } from "@/store/tickets";
+import { TicketsQuantity } from "./TicketsQuantity";
 import basket from "public/icons/basket.svg";
 
 import styles from "./styles.module.scss";
-
-const TicketsQuantity: FC = () => {
-  const totalQuantity = useSelector(totalQuantitySelector);
-  if (!totalQuantity) return null;
-  return (
-    <div className={styles["header__basket-items-quantity"]}>
-      {totalQuantity}
-    </div>
-  );
-};
 
 export const Header: FC = () => {
   return (

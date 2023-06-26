@@ -41,11 +41,13 @@ export const Select: FC<Props> = ({
     () => setDropdownOffset(ref.current?.getBoundingClientRect()),
     []
   );
+
   const handleDropdown = useCallback(() => {
     if (!isDropdownOpen)
       setDropdownOffset(ref.current?.getBoundingClientRect());
     setIsDropdownOpen(!isDropdownOpen);
   }, [isDropdownOpen]);
+
   const onDropdownClose = useCallback(() => setIsDropdownOpen(false), []);
 
   const events = useMemo(() => ["scroll", "resize"], []);

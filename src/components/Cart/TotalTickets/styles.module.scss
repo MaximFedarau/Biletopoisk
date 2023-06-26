@@ -10,11 +10,3 @@
     font-size: $text-xl;
     font-weight: $font-semibold;
 }
-
-.cards {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: $size-8;
-    margin-bottom: $size-8;
-}

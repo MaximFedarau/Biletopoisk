@@ -35,6 +35,18 @@
     gap: $size-4;
 }
 
+@mixin modal-button {
+    height: $size-20;
+    width: $size-28;
+    border-radius: $rounded-lg;
+    padding: $size-5;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
 .container__button_filled {
     @include modal-button;
     background-color: $orange;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useSelector } from "react-redux";
 
 import { Spinner, EmptyState, MovieCard } from "@/components/Reusables";
@@ -7,27 +7,16 @@ import {
   moviesSelector,
   searchFiltersSelector,
 } from "@/store/movies";
-import { Movie, SearchFilters } from "@/types";
+import { filterMovies } from "@/utils";
 
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-
-const filterMovies = (
-  movies: Movie[],
-  { title: searchTitle, genre: searchGenre }: SearchFilters
-) => {
-  return movies.filter(({ title, genre }) => {
-    return (
-      title.toLowerCase().includes(searchTitle?.toLowerCase().trim() || "") &&
-      (Boolean(searchGenre) ? genre === searchGenre : true)
-    );
-  });
-};
 
 export const MoviesDisplay: FC = () => {
   const movies = useSelector(moviesSelector);
   const searchFilters = useSelector(searchFiltersSelector);
   const isMoviesLoading = useSelector(isMoviesLoadingSelector);
+
   return (
     <section
       className={classNames(styles.container, {

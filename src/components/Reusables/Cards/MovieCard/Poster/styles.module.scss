@@ -1,0 +1,25 @@
+.poster {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}
+
+.poster__row {
+    display: flex;
+    gap: $size-4;
+}
+
+.poster__label {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+}
+
+.poster__text {
+    font-size: $text-xl;
+}
+
+.poster__description {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+}

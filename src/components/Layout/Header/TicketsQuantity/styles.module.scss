@@ -1,0 +1,10 @@
+.tickets-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    border-radius: $rounded-lg;
+    color: $white;
+    width: $size-14;
+    height: $size-14;
+}

@@ -19,19 +19,6 @@ interface ChevronButtonProps {
   changeIsOpen: () => void;
 }
 
-const ChevronButton: FC<ChevronButtonProps> = ({ changeIsOpen, isOpen }) => {
-  return (
-    <NextImage
-      src={chevronDown}
-      alt="chevron"
-      onClick={changeIsOpen}
-      className={classNames(styles.card__button, {
-        [styles.card__button_pressed]: isOpen,
-      })}
-    />
-  );
-};
-
 export const DetailsCard: FC<PropsWithChildren<CardProps>> = ({
   title,
   children,
@@ -48,7 +35,14 @@ export const DetailsCard: FC<PropsWithChildren<CardProps>> = ({
       titleSize={CARD_TITLE_SIZE.SMALL}
       className={styles.card}
       rightSection={
-        <ChevronButton isOpen={isOpen} changeIsOpen={changeIsOpen} />
+        <NextImage
+          src={chevronDown}
+          alt="chevron"
+          onClick={changeIsOpen}
+          className={classNames(styles.card__button, {
+            [styles.card__button_pressed]: isOpen,
+          })}
+        />
       }
     >
       {isOpen && children}

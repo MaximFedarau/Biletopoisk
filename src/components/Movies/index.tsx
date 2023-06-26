@@ -10,7 +10,6 @@ import { useGetInitialDataQuery } from "@/store/api";
 import styles from "./styles.module.scss";
 
 export const Movies: FC = () => {
-  // returns cinemas and sets movies global state
   const { data: cinemas, isLoading, isError } = useGetInitialDataQuery();
 
   if (isLoading)
