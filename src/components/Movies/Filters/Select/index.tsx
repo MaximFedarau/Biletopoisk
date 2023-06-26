@@ -74,6 +74,8 @@ export const Select: FC<Props> = ({
             className={classNames({
               [styles.container__button_pressed]: isDropdownOpen,
             })}
+            placeholder="blur"
+            blurDataURL="public/icons/filters_chevron_down.svg"
           />
         }
         value={inputValue}

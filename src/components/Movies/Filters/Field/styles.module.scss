@@ -19,6 +19,10 @@
     height: $size-20;
     width: 100%;
     overflow: hidden;
+
+    &:focus-within {
+        border-color: $orange;
+    }
 }
 
 .container__input-container_button {

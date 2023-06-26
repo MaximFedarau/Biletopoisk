@@ -10,21 +10,31 @@ import basket from "public/icons/basket.svg";
 
 import styles from "./styles.module.scss";
 
-export const Header: FC = () => {
+const TicketsQuantity: FC = () => {
   const ticketsQuantity = useSelector(ticketsQuantitySelector);
+  if (!ticketsQuantity) return null;
+  return (
+    <div className={styles["header__basket-items-quantity"]}>
+      {ticketsQuantity}
+    </div>
+  );
+};
+
+export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <NextLink href="/">
         <p className={styles.header__title}>Билетопоиск</p>
       </NextLink>
       <section className={styles.header__basket}>
-        {Boolean(ticketsQuantity) && (
-          <div className={styles["header__basket-items-quantity"]}>
-            {ticketsQuantity}
-          </div>
-        )}
+        <TicketsQuantity />
         <NextLink href="/cart">
-          <NextImage src={basket} alt="basket" />
+          <NextImage
+            src={basket}
+            alt="basket"
+            placeholder="blur"
+            blurDataURL="public/icons/basket.svg"
+          />
         </NextLink>
       </section>
     </header>

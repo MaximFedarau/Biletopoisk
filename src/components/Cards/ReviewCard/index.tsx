@@ -3,14 +3,19 @@ import NextImage from "next/image";
 
 import { Card } from "../Card";
 import { Review } from "@/types";
-import emptyAvatar from "public/icons/empty-avatar.svg";
+import emptyAvatar from "public/images/empty_avatar.svg";
 
 import styles from "./styles.module.scss";
 
 export const ReviewCard: FC<Review> = ({ name, text, rating }) => {
   return (
     <div className={styles.review}>
-      <NextImage src={emptyAvatar} alt="avatar" />
+      <NextImage
+        src={emptyAvatar}
+        alt="avatar"
+        placeholder="blur"
+        blurDataURL="public/images/empty_avatar.svg"
+      />
       <Card
         title={
           <div className={styles.review__title}>

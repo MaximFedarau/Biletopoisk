@@ -39,6 +39,10 @@
     @include modal-button;
     background-color: $orange;
     color: $white;
+
+    &:hover {
+        background-color: $orange-hover;
+    }
 }
 
 .container__button_outlined {
@@ -46,4 +50,8 @@
     background-color: $white;
     color: $orange;
     border: $size-px solid $orange;
+
+    &:hover {
+        border-color: $orange-hover;
+    }
 }

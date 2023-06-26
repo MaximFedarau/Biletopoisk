@@ -13,18 +13,9 @@
     padding: $size-16;
 }
 
-@mixin ticket-button {
-    width: $size-10;
-    height: $size-10;
-    border-radius: $rounded;
-    color: white;
-    text-align: center;
-    font-weight: $font-light;
-    cursor: pointer;
-}
-
 @mixin modal-button {
     height: $size-20;
+    width: $size-28;
     border-radius: $rounded-lg;
     padding: $size-5;
     font-size: $text-sm;

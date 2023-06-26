@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, ReactNode, useMemo, memo } from "react";
+import { FC, ReactNode, memo } from "react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,8 @@ import { genres } from "@/constants";
 import { CARD_TITLE_SIZE, Movie } from "@/types";
 import { ticketSelector, addTicket, removeTicket } from "@/store/tickets";
 import close from "public/icons/close.svg";
+import plus from "public/icons/plus.svg";
+import minus from "public/icons/minus.svg";
 
 import styles from "./styles.module.scss";
 
@@ -38,16 +40,33 @@ const TicketContorls: FC<Props> = ({
   return (
     <div className={styles.ticket} onClick={(event) => event.preventDefault()}>
       <div className={styles.ticket__controller}>
-        <div
-          className={styles["ticket__remove-button"]}
+        <button
+          className={styles.ticket__button}
           onClick={decreaseTickets}
+          disabled={quantity === 0}
         >
-          -
-        </div>
+          <NextImage
+            src={minus}
+            alt="minus"
+            className={styles["ticket__button-image"]}
+            placeholder="blur"
+            blurDataURL="public/icons/minus.svg"
+          />
+        </button>
         <p className={styles.ticket__text}>{quantity}</p>
-        <div className={styles["ticket__add-button"]} onClick={increaseTickets}>
-          +
-        </div>
+        <button
+          className={styles.ticket__button}
+          onClick={increaseTickets}
+          disabled={quantity === 30}
+        >
+          <NextImage
+            src={plus}
+            alt="plus"
+            className={styles["ticket__button-image"]}
+            placeholder="blur"
+            blurDataURL="public/icons/plus.svg"
+          />
+        </button>
       </div>
       {isTicketCard && (
         <NextImage
@@ -55,6 +74,8 @@ const TicketContorls: FC<Props> = ({
           alt="close"
           className={styles.ticket__close}
           onClick={() => lastTicketHandler?.(movie)}
+          placeholder="blur"
+          blurDataURL="public/icons/close.svg"
         />
       )}
     </div>
@@ -102,14 +123,17 @@ const _MovieCard: FC<CardProps> = ({
           [styles.container_poster]: isPoster,
         })}
       >
-        <NextImage
-          src={movie.posterUrl}
-          alt={`${movie.title} poster`}
-          width={100}
-          height={120}
-          className={styles.container__image}
-          priority
-        />
+        <div className={styles.container__image}>
+          <NextImage
+            src={movie.posterUrl}
+            alt={`${movie.title} poster`}
+            priority
+            fill
+            sizes="100%"
+            placeholder="blur"
+            blurDataURL={movie.posterUrl}
+          />
+        </div>
         <Card
           title={movie.title}
           titleSize={CARD_TITLE_SIZE.SMALL}

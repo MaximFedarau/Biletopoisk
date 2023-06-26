@@ -15,14 +15,41 @@ import { Movie } from "@/types";
 
 import styles from "./styles.module.scss";
 
+const TotalTickets: FC = () => {
+  const ticketsQuantity = useSelector(ticketsQuantitySelector);
+  return (
+    <div className={styles.total}>
+      <p>Итого билетов:</p>
+      <p>{ticketsQuantity}</p>
+    </div>
+  );
+};
+
+interface TicketsListProps {
+  lastTicketHandler?: (movie: Movie) => void;
+}
+
+const TicketsList: FC<TicketsListProps> = ({ lastTicketHandler }) => {
+  const tickets = useSelector(ticketsSelector);
+  return (
+    <div className={styles.cards}>
+      {tickets.map(({ id, movie }) => (
+        <MovieCard
+          key={id}
+          movie={movie}
+          lastTicketHandler={lastTicketHandler}
+          isTicketCard
+        />
+      ))}
+    </div>
+  );
+};
+
 export const Cart: FC = () => {
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deletedMovie, setDeletedMovie] = useState<Movie>();
-
-  const ticketsQuantity = useSelector(ticketsQuantitySelector);
-  const tickets = useSelector(ticketsSelector);
 
   const onModalClose = useCallback(() => {
     const body = document.body;
@@ -56,20 +83,8 @@ export const Cart: FC = () => {
 
   return (
     <>
-      <div className={styles.cards}>
-        {tickets.map(({ id, movie }) => (
-          <MovieCard
-            key={id}
-            movie={movie}
-            lastTicketHandler={lastTicketHandler}
-            isTicketCard
-          />
-        ))}
-      </div>
-      <div className={styles.total}>
-        <p>Итого билетов:</p>
-        <p>{ticketsQuantity}</p>
-      </div>
+      <TicketsList />
+      <TotalTickets />
       {isModalOpen &&
         createPortal(
           <Modal
