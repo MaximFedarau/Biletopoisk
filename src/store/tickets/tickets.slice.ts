@@ -2,14 +2,17 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Movie, Ticket } from "@/types";
 
+// separating tickets & its quantities helps us to avoid excess renders
 interface InitialState {
-  tickets: Ticket[];
-  ticketsQuantity: number;
+  tickets: Movie[];
+  ticketsQuantities: Ticket[];
+  totalQuantity: number;
 }
 
 const initialState: InitialState = {
   tickets: [],
-  ticketsQuantity: 0,
+  ticketsQuantities: [],
+  totalQuantity: 0,
 };
 
 export const ticketsSlice = createSlice({
@@ -17,33 +20,45 @@ export const ticketsSlice = createSlice({
   initialState,
   reducers: {
     addTicket: (state, { payload: movie }: PayloadAction<Movie>) => {
-      const index = state.tickets.findIndex((ticket) => ticket.id === movie.id);
+      const index = state.ticketsQuantities.findIndex(
+        ({ id }) => id === movie.id
+      );
+
       if (index !== -1) {
-        if (state.tickets[index].quantity !== 30) {
-          state.tickets[index].quantity++;
-          state.ticketsQuantity++;
+        if (state.ticketsQuantities[index].quantity !== 30) {
+          state.ticketsQuantities[index].quantity++;
+          state.totalQuantity++;
         }
       } else {
-        state.tickets.push({ id: movie.id, quantity: 1, movie: movie });
-        state.ticketsQuantity++;
+        state.tickets.push(movie);
+        state.ticketsQuantities.push({ id: movie.id, quantity: 1 });
+        state.totalQuantity++;
       }
     },
     removeTicket: (state, { payload: movie }: PayloadAction<Movie>) => {
-      const index = state.tickets.findIndex((ticket) => ticket.id === movie.id);
-      if (index !== -1) {
-        if (state.tickets[index].quantity !== 0) {
-          state.tickets[index].quantity--;
-          state.ticketsQuantity--;
-          if (state.tickets[index].quantity === 0)
-            state.tickets.splice(index, 1);
+      const index = state.ticketsQuantities.findIndex(
+        ({ id }) => id === movie.id
+      );
+
+      if (index !== -1 && state.ticketsQuantities[index].quantity !== 0) {
+        state.ticketsQuantities[index].quantity--;
+        state.totalQuantity--;
+        // deleting ticket
+        if (state.ticketsQuantities[index].quantity === 0) {
+          state.tickets.splice(index, 1);
+          state.ticketsQuantities.splice(index, 1);
         }
       }
     },
     deleteTicket: (state, { payload: movie }: PayloadAction<Movie>) => {
-      const index = state.tickets.findIndex((ticket) => ticket.id === movie.id);
+      const index = state.ticketsQuantities.findIndex(
+        ({ id }) => id === movie.id
+      );
+
       if (index !== -1) {
-        state.ticketsQuantity -= state.tickets[index].quantity;
+        state.totalQuantity -= state.ticketsQuantities[index].quantity;
         state.tickets.splice(index, 1);
+        state.ticketsQuantities.splice(index, 1);
       }
     },
   },

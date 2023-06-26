@@ -8,7 +8,7 @@ import { MovieCard } from "../Cards";
 import { Modal } from "../Modal";
 import {
   deleteTicket,
-  ticketsQuantitySelector,
+  totalQuantitySelector,
   ticketsSelector,
 } from "@/store/tickets";
 import { Movie } from "@/types";
@@ -16,11 +16,11 @@ import { Movie } from "@/types";
 import styles from "./styles.module.scss";
 
 const TotalTickets: FC = () => {
-  const ticketsQuantity = useSelector(ticketsQuantitySelector);
+  const totalQuantity = useSelector(totalQuantitySelector);
   return (
     <div className={styles.total}>
       <p>Итого билетов:</p>
-      <p>{ticketsQuantity}</p>
+      <p>{totalQuantity}</p>
     </div>
   );
 };
@@ -33,9 +33,9 @@ const TicketsList: FC<TicketsListProps> = ({ lastTicketHandler }) => {
   const tickets = useSelector(ticketsSelector);
   return (
     <div className={styles.cards}>
-      {tickets.map(({ id, movie }) => (
+      {tickets.map((movie) => (
         <MovieCard
-          key={id}
+          key={movie.id}
           movie={movie}
           lastTicketHandler={lastTicketHandler}
           isTicketCard
@@ -83,7 +83,7 @@ export const Cart: FC = () => {
 
   return (
     <>
-      <TicketsList />
+      <TicketsList lastTicketHandler={lastTicketHandler} />
       <TotalTickets />
       {isModalOpen &&
         createPortal(

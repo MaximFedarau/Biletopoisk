@@ -9,7 +9,11 @@ import classNames from "classnames";
 import { Card } from "../Card";
 import { genres } from "@/constants";
 import { CARD_TITLE_SIZE, Movie } from "@/types";
-import { ticketSelector, addTicket, removeTicket } from "@/store/tickets";
+import {
+  ticketQuantitySelector,
+  addTicket,
+  removeTicket,
+} from "@/store/tickets";
 import close from "public/icons/close.svg";
 import plus from "public/icons/plus.svg";
 import minus from "public/icons/minus.svg";
@@ -27,7 +31,9 @@ const TicketContorls: FC<Props> = ({
   lastTicketHandler,
   isTicketCard,
 }) => {
-  const { quantity } = useSelector((state) => ticketSelector(state, movie.id));
+  const { quantity } = useSelector((state) =>
+    ticketQuantitySelector(state, movie.id)
+  );
   const dispatch = useDispatch();
 
   const increaseTickets = () => dispatch(addTicket(movie));
@@ -49,8 +55,6 @@ const TicketContorls: FC<Props> = ({
             src={minus}
             alt="minus"
             className={styles["ticket__button-image"]}
-            placeholder="blur"
-            blurDataURL="public/icons/minus.svg"
           />
         </button>
         <p className={styles.ticket__text}>{quantity}</p>
@@ -63,8 +67,6 @@ const TicketContorls: FC<Props> = ({
             src={plus}
             alt="plus"
             className={styles["ticket__button-image"]}
-            placeholder="blur"
-            blurDataURL="public/icons/plus.svg"
           />
         </button>
       </div>

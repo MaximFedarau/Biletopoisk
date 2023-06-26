@@ -32,7 +32,6 @@ export interface SearchFilters {
 export interface Ticket {
   id: string;
   quantity: number;
-  movie: Movie;
 }
 
 export interface Review {

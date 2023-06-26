@@ -28,8 +28,6 @@ const ChevronButton: FC<ChevronButtonProps> = ({ changeIsOpen, isOpen }) => {
       className={classNames(styles.card__button, {
         [styles.card__button_pressed]: isOpen,
       })}
-      placeholder="blur"
-      blurDataURL="public/icons/chevron_down.svg"
     />
   );
 };
